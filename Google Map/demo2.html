@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的地图2</title>
+	</head>
+	<body onload="initialize()" onunload="GUnload()">
+		<div id="map_canvas" style="width: 100%; height: 600px"></div>  
+		
+		<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyCS6KlQiaLg37b1BUbKf6iu3Q0TSW5brKw"></script>
+  		<script type="text/javascript">  
+    function initialize() {  
+        if (GBrowserIsCompatible()) {  //辨别浏览器是否兼容  
+            var map = new GMap2(document.getElementById("map_canvas"));  //调用google函数画一个初图  
+            map.setCenter(new GLatLng(31.295310623919682,120.5486770248566), 8); //设置地图的中心点  
+            map.addControl(new GLargeMapControl()); 
+            //添加地图组件　一个在Google Local之中使用的大的移动缩放控件，显示在地图的左上角
+            map.addControl(new GMapTypeControl()); 
+            //添加地图组件　让用户切换地图类型的按钮控件(例如地图模式和卫星图模式)
+            map.addControl(new GScaleControl());
+            //添加地图组件　地图比例尺控件
+            map.addControl(new GOverviewMapControl(new GSize(100, 100))); 
+            //添加地图组件　一个可折叠的鹰眼地图，在地图的角落
+            GEvent.addListener(map,"moveend",function(){//捕捉　当地图上发生改变的时候调用  
+                var center = map.getCenter(); //获得中心经纬  
+            });  
+            map.setMapType(G_HYBRID_MAP); 
+            //设置地图的类型　现在用的混合视图　(G_NORMAL_MAP >简图,G_SATELLITE_MAP >卫星图,G_HYBRID_MAP >混合图)
+            map.enableScrollWheelZoom(); //让地图启用鼠标滚轮  
+            map.enableDoubleClickZoom();//让地图启用鼠标双击  
+            map.enableContinuousZoom();//让地图启动滑动效果  
+        } else {  
+            alert("您的浏览器不支持谷歌地图！"); //您的浏览器不兼容  
+        }  
+    }  
+      
+    </script>  
+	</body>
+</html>

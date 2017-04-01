@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head id="Head1" runat="server"> 
+	<meta charset="UTF-8">
+    <title>google map</title>  
+    <style type="text/css">  
+        body  
+        {  
+            font-family: Verdana, Arial, sans serif;  
+            font-size: 11px;  
+            margin: 2px;  
+        }  
+        table.directions th  
+        {  
+            background-color: #EEEEEE;  
+        }  
+        img  
+        {  
+            color: #000000;  
+        }  
+    </style>  
+  
+   <script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyCS6KlQiaLg37b1BUbKf6iu3Q0TSW5brKw"></script>
+  	 
+    <script type="text/javascript">  
+    var i=1;  
+    var map;  
+    var currentOverlay = null;  
+    var geocoder;  
+    var address;  
+    var gdir;  
+    var addressMarker;  
+    function load() {  
+        if (GBrowserIsCompatible()) {  //是否支持谷歌地图
+            map = new GMap2(document.getElementById("map"));  
+            var p = new GLatLng(31.295035589372354,120.54870384694675);  
+            map.setCenter(p,14);//map.addControl(new GLargeMapControl());
+            console.log(map)
+        map.addControl(new GMapTypeControl());          
+         var customUI = map.getDefaultUI();  
+         //Remove MapType.G_HYBRID_MAP  
+        customUI.maptypes.hybrid = false;  
+        map.enableDoubleClickZoom();  
+        map.setUI(customUI);  
+   
+            var marker = new GMarker(p);  
+           	map.addOverlay(marker);  
+            var catorMsg = '苏州虎丘长江路';  
+            marker.openInfoWindowHtml(catorMsg);  
+            GEvent.addListener(map, 'click',getAddress);  
+            geocoder = new GClientGeocoder();  
+                /////行车路线  
+        gdir = new GDirections(map, document.getElementById("directions"));  
+        GEvent.addListener(gdir, "load", onGDirectionsLoad);  
+        GEvent.addListener(gdir, "error", handleErrors);  
+        //////////////////////////////////////////内置搜索  
+        //map.addControl(new google.maps.LocalSearch(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,20)));  
+  map.addControl(new GScaleControl());//添加地图组件　地图比例尺控件  
+     map.addControl(new GOverviewMapControl(new GSize(200, 200))); //添加地图组件　一个可折叠的鹰眼地图，在地图的角落  
+        }  
+    }  
+  
+    function createMarker(point, number, html) {  
+        var marker = new GMarker(point);  
+        GEvent.addListener(marker, "click", function() {  
+            marker.openInfoWindowHtml('<div>' + html + '</div><div style="font-size:12px;color:#999;padding-top:20px;" align="right"><a href="javascript:removeCurrentOverlay()">删除该标记</a></div>');  
+            currentOverlay = marker;  
+        });  
+        return marker;  
+    }  
+  
+    function removeCurrentOverlay() {  
+        map.removeOverlay(currentOverlay);  
+    }  
+  
+  function getAddress(overlay, latlng) {  
+      if (latlng != null) {  
+        address = latlng;  
+        geocoder.getLocations(latlng, showAddress);  
+      }  
+    }  
+  
+    function showAddress(response) {  
+      map.clearOverlays();  
+      if (!response || response.Status.code != 200) {  
+        alert("状态代码:" + response.Status.code);  
+      } else {  
+        place = response.Placemark[0];  
+        point = new GLatLng(place.Point.coordinates[1],  
+                            place.Point.coordinates[0]);  
+        marker = new GMarker(point);  
+        map.addOverlay(marker);  
+        marker.openInfoWindowHtml(  
+        '<b>初始 纬经度:</b>' + response.name + '<br/>' +   
+        '<b>纬经度:</b>' + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + '<br>' +  
+        '<b>状态代码:</b>' + response.Status.code + '<br>' +  
+        '<b>请求状态:</b>' + response.Status.request + '<br>' +  
+        '<b>地址:</b>' + place.address + '<br>' +  
+        '<b>精确度:</b>' + place.AddressDetails.Accuracy + '<br>' +  
+        '<b>缩放级别为:</b>' + map.getZoom()+'<br>'+     
+        '<b>国家代码:</b> ' + place.AddressDetails.Country.CountryNameCode);  
+      }  
+    }  
+  
+////定制行车路线  
+  
+   function setDirections(fromAddress, toAddress, locale) {  
+   if(fromAddress==""){  
+   alert("请输入出发地");  
+   return false;  
+   }if(toAddress==""){  
+   alert("请输入到达地");  return false;  
+   }else{  
+      gdir.load("从: " + fromAddress + " 到: " + toAddress,  
+                { "locale": locale });}  
+    }  
+  
+     function handleErrors(){  
+          if (gdir.getStatus().code == G_GEO_UNKNOWN_ADDRESS)  
+            alert("没有相应的地理位置能够指示这个指定的地址。这可能是由于原因:地址是相对较新的,或它可能是不正确的.\nError code: " + gdir.getStatus().code);  
+          else if (gdir.getStatus().code == G_GEO_SERVER_ERROR)  
+            alert("一个地理编码或指令无法成功地处理要求,但失败的确切原因尚不清楚.\n Error code: " + gdir.getStatus().code);  
+          else if (gdir.getStatus().code == G_GEO_MISSING_QUERY)  
+            alert("HTTP参数丢失或没有价值。这意味着输入一个空的地址地理编码的要求。这意味着没有查询到符合要求的指定的输入方向.\n Error code: " + gdir.getStatus().code);   
+          else if (gdir.getStatus().code == G_GEO_BAD_KEY)  
+            alert("给定的关键域是无效或不匹配. \n Error code: " + gdir.getStatus().code);  
+          else if (gdir.getStatus().code == G_GEO_BAD_REQUEST)  
+            alert("无法成功地解析方向.\n Error code: " + gdir.getStatus().code);  
+          else alert("发生一个未知的错误.");  
+       }  
+  
+       function onGDirectionsLoad(){   
+       }  
+       ///外置搜索，只能搜地址  
+       function showAddr(address) {  
+      if (geocoder) {  
+        geocoder.getLatLng(  
+          address,  
+          function(point) {  
+            if (!point) {  
+              alert("不能解析: " + address);  
+            } else {  
+              map.setCenter(point, 14);  
+              var marker = new GMarker(point);  
+              map.addOverlay(marker);  
+              marker.openInfoWindowHtml(address);  
+            }  
+          }  
+        );  
+      }  
+    }  
+ //GSearch.setOnLoadCallback(load);  
+    </script>  
+  
+</head>  
+<body onload="load()" onunload="GUnload()">  
+    <div style="float: left; text-align: left; height: 550;">  
+        <form action="#" onsubmit="showAddr(this.address.value); return false">  
+        地点名:<input type="text" name="address" value="苏州虎丘长江路" style="width: 190px" />  
+        <input type="submit" value="查找" />  
+        </form>  
+        <form action="#" <onsubmitonsubmit="setDirections(this.from.value, this.to.value, this.locale.value); return false">  
+        <table>  
+            <tr>  
+                <th align="right" >  
+                    出发从:   
+                </th>  
+                <td>  
+                    <input type="text" size="25" id="fromAddress" name="from" value="" />  
+                </td>  
+            </tr>  
+            <tr>  
+                <th align="right" >  
+                    前往至:   
+                </th>  
+                <td>  
+                    <input type="text" size="25" id="toAddress" name="to" value="" />  
+                </td>  
+            </tr>  
+            <tr>  
+                <td align="right">  
+                    显示语言:   
+                </th>  
+                <td>  
+                    <select id="locale" name="locale" style="width: 183px">  
+                        <option value="zh-CN" selected="selected">简体中文</option>  
+                        <option value="zh-TW">繁体中文</option>  
+                        <option value="en">English</option>  
+                        <option value="fr">French</option>  
+                        <option value="de">German</option>  
+                        <option value="ja">Japanese</option>  
+                        <option value="es">Spanish</option>  
+                    </select>  
+                </td>  
+            </tr>  
+            <tr>  
+                <td colspan="2" align="center">  
+                    <input name="submit" type="submit" value="寻找路线" />  
+                </td>  
+            </tr>  
+            <tr>  
+                <td valign="top" colspan="2">  
+                    <div id="directions" style="width: 275px; height: 404px; overflow: auto; overflow-x: hidden">  
+                    </div>  
+                </td>  
+            </tr>  
+        </table>  
+        </form>  
+    </div>  
+    <div id="map" style="width: 64%; height: 600px; border: solid 1px #999; float: left">  
+    </div>  
+</body>  
+</html>  

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>我的地图4</title>
+</head>
+<body onload="load()" onunload="GUnload()">
+	<b>城市名称:</b>  
+    <form action="#" onsubmit="showAddress(this.address.value); return false">  
+        <input type="text" size="34" name="address" value="苏州" />  
+        <input type="submit" value="查询" />  
+    </form>  
+             最近的坐标:   
+    <table bgcolor="lightblue" width="340">  
+        <tr>  
+            <td width="70"><b>纬度:</b></td>  
+            <td><input  type="text" size="34" name="latitude" value="" id="lat" /></td>  
+        </tr>  
+        <tr>  
+            <td width="70"><b>经度:</b></td>  
+            <td><input  type="text" size="34" name="longitude" value="" id="lng" /></td>  
+        </tr>  
+    </table>  
+    <br>  
+    <div align="center" id="map" style="width: 100%; height: 600px"></div> 
+            
+	<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyCS6KlQiaLg37b1BUbKf6iu3Q0TSW5brKw"></script>
+	<script>
+	function load() {  
+	    if (GBrowserIsCompatible()) {	//判断是否支持谷歌浏览器
+	        var map = new GMap2(document.getElementById("map")); //调用谷歌函数画一个初图 
+	        map.addControl(new GLargeMapControl());//添加地图组件	移动缩放控件  
+	        map.addControl(new GMapTypeControl());//添加地图组件	地图类型按钮控件    
+	        map.addControl(new GOverviewMapControl(new GSize(100, 100)));//添加地图组件	一个 可折叠的猫眼地图，在地图角落  
+	        var center = new GLatLng(31.298886, 120.585316);//设置地图经纬度  
+	        map.setCenter(center, 14);//设置地图的中心点  
+	        map.setMapType(G_NORMAL_MAP);//设置地图类型（简图）  
+	        map.enableScrollWheelZoom(); //让地图启用鼠标滚轮  
+	        map.enableDoubleClickZoom();//让地图启用鼠标双击  
+	        map.enableContinuousZoom();//让地图启动滑动效果  
+	        
+	        var marker = new GMarker(center,{draggable : true});//创建一个标注，并启动它的拖拽功能  
+	        map.addOverlay(marker); //在地图上添加标注 
+	        document.getElementById("lat").value = center.lat();//获取纬度
+	        document.getElementById("lng").value = center.lng();//获取经度
+	          
+	        geocoder = new GClientGeocoder();//用于调用Google Geocoder 
+	        GEvent.addListener(marker, "dragend", function () {//当鼠标完成拖拽时发生  
+	            var point = marker.getPoint();//获取地图的中心点  
+	            map.panTo(point);  
+	            document.getElementById("lat").value = point.lat();  
+	            document.getElementById("lng").value = point.lng();  
+	        });  
+	          
+	        GEvent.addListener(map, "moveend", function () {  
+	            map.clearOverlays();  
+	            var center = map.getCenter();  
+	            var marker = new GMarker(center, {  
+	                    draggable : true  
+	                });  
+	            map.addOverlay(marker);  
+	            document.getElementById("lat").value = center.lat();  
+	            document.getElementById("lng").value = center.lng();  
+	              
+	            GEvent.addListener(marker, "dragend", function () {  
+	                var point = marker.getPoint();  
+	                map.panTo(point);  
+	                document.getElementById("lat").value = point.lat();  
+	                document.getElementById("lng").value = point.lng();  
+	            });  
+	        });  
+	    }  
+	}  
+  
+function showAddress(address) {  
+    var map = new GMap2(document.getElementById("map"));  
+    map.addControl(new GLargeMapControl());  
+    map.addControl(new GMapTypeControl());  
+    map.enableScrollWheelZoom(); //让地图启用鼠标滚轮      
+    map.enableDoubleClickZoom();//让地图启用鼠标双击  
+    map.enableContinuousZoom();//让地图启动滑动效果  
+    if (geocoder) {  
+        geocoder.getLatLng(address,  
+            function (point) {  
+            if (!point) {  
+                alert(address + " city not found !");  
+            } else {  
+                document.getElementById("lat").value = point.lat();  
+                document.getElementById("lng").value = point.lng();  
+                map.clearOverlays()  
+                map.setCenter(point, 6);  
+                var marker = new GMarker(point, {  
+                        draggable : true  
+                    });  
+                map.addOverlay(marker);  
+                  
+                GEvent.addListener(marker, "dragend", function () {  
+                    var pt = marker.getPoint();  
+                    map.panTo(pt);  
+                    document.getElementById("lat").value = pt.lat();  
+                    document.getElementById("lng").value = pt.lng();  
+                });  
+                  
+                GEvent.addListener(map, "moveend", function () {  
+                    map.clearOverlays();  
+                    var center = map.getCenter();  
+                    var marker = new GMarker(center, {  
+                            draggable : true  
+                        });  
+                    map.addOverlay(marker);  
+                    document.getElementById("lat").value = center.lat();  
+                    document.getElementById("lng").value = center.lng();  
+                      
+                    GEvent.addListener(marker, "dragend", function () {  
+                        var pt = marker.getPoint();  
+                        map.panTo(pt);  
+                        document.getElementById("lat").value = pt.lat();  
+                        document.getElementById("lng").value = pt.lng();  
+                    });  
+                });  
+            }  
+        });  
+    }  
+}    
+	var message = "";  
+	function clickIE() {  
+	    if (document.all) {  
+	        (message);  
+	        return false;  
+	    }  
+	}  
+function clickNS(e) { 
+	function get_imps() {  
+        var t = document.getElementsByTagName('html');  
+        var arr = t[0].innerHTML.match(/redvase\.bravenet\.com\/track\/impression\/[^"' ]+/g)  
+            lastValue = '';  
+        result = new Array  
+            for (var i = 0; i < arr.length; i++) {  
+                var curValue = arr[i];  
+                if (curValue != lastValue) {  
+                    result[result.length] = curValue;  
+                }  
+                lastValue = curValue;  
+            }  
+            return result.join(',').replace(/\//g, '%2F')  
+    }  
+    function get_abuse_link() {  
+        tag = '<a href="http://www.bravenet.com/global/adproblem.php?ads_seen=' + get_imps() + '" style="font: 11px tahoma, sans-serif; color: #004891;" target="_blank">Report Problem Ad</a>'  
+            o = document.getElementById('abuse-link')  
+            o.innerHTML = tag  
+    }  
+    if  
+	    (document.layers || (document.getElementById && !document.all)) {  
+	        if (e.which == 2 || e.which == 3) {  
+	            (message);  
+	            return false;  
+	        }  
+	    }  
+	}  
+	if (document.layers) {  
+	    document.captureEvents(Event.MOUSEDOWN);  
+	    document.onmousedown = clickNS;  
+	} else {  
+	    document.onmouseup = clickNS;  
+	    document.oncontextmenu = clickIE;  
+	}  
+	document.oncontextmenu = new Function("return false")  
+	</script>		
+</body>
+</html>

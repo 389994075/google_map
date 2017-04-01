@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title> Locus </title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdIlaRp0Dm8cEP8oXZ_8HLuj_zpccK7gw&sensor=true">
+    </script>
+    <script type="text/javascript" >
+        
+
+        //所有坐标
+        var locations = new Array(
+            "39.27,116.95","34.16,108.54",
+			"29.35,106.33","22.15,114.15",
+			"24.15,118.15","26.15,119.15",
+			"30.26,120.19","31.568,120.299"
+        );
+        var len=locations.length; 
+       
+        //地图
+        var map;
+        var marker;
+        var poly;
+
+        /* 加载地图 */
+        function initialize() {
+            var latlng = new google.maps.LatLng(34.16,108.54);
+            var myOptions = {
+                zoom: 5,    //缩放级别
+                center: latlng,        //坐标
+                mapTypeId: google.maps.MapTypeId.ROADMAP    //类型:默认的普通二维图块
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            
+            // 线条设置
+            var polyOptions = {
+              strokeColor: 'blue',    // 颜色
+              strokeOpacity: 0.6,    // 透明度
+              strokeWeight:4    // 宽度
+            }
+            poly = new google.maps.Polyline(polyOptions);
+            poly.setMap(map);    // 装载
+
+            
+            /* 循环标出所有坐标 */
+            for(var i=0; i<locations.length; i++){
+                var loc = locations[i].split(',');
+
+                var path = poly.getPath();    //获取线条的坐标
+                path.push(new google.maps.LatLng(loc[0], loc[1]));    //为线条添加标记坐标
+                //生成标记图标
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(loc[0], loc[1]),
+                    map: map, 
+                    icon: "train.png"
+                });
+            }
+            
+        }
+</script>
+</head>
+
+<body onload="initialize()">
+    <div id="map_canvas" style="width:1400px; height:760px;"></div>
+</body>
+</html>

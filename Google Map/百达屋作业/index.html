@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-ComPatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        (function (doc, win) {
+          var docEl = doc.documentElement,   //获取html标签
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="box1">
+            <ul class="header">
+                <li><img src="img/banner1_01.jpg" alt=""></li>
+            </ul>
+            <ul class="list">
+                <li href="#">
+                    <img src="img/icon-yuan.png" alt="">
+                    <span>入住地</span>
+                    <input type="hidden" id="city_id">
+                    <b  id="city_name">广州</b>
+                    <img src="img/right_arrow.png" alt="">
+                    <span>
+                        <i></i>
+                        <p>我的位置</p>
+                    </span>
+                </li> 
+                <li href="#">
+                    <img src="img/icon-yuan.png" alt="">
+                    <span>入住日</span>
+                    <b id="date">5月4日</b>
+                    <img src="img/right_arrow.png" id="arrow">
+                </li>    
+                <li href="#">
+                    <img src="img/icon-yuan.png" alt="">
+                    <span>住几晚</span>
+                    <b id="date">1晚（5月5日离店）</b>
+                    <img src="img/right_arrow.png" id="arrow">
+                </li>    
+                <li href="#">
+                    <img src="img/icon-yuan.png" alt="">
+                    <span>酒店名</span>
+                    <b id="hotelname">酒店名称（选填 ）</b>
+                </li>    
+            </ul>
+            <div class="footer">
+                <button id="search">
+                    <img src="img/icon-search.png" alt="">
+                    <span>搜索酒店</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="lib/zepto.min.js"></script>
+<script src="lib/common.js"></script>
+<script>
+    common.init();
+</script>
+</html>

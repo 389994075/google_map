@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.table{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="biaoge">biaogebiaogebiaoge</div>
+		<div class="table">tabletabletabletable</div>
+		
+		<script src="jquery.js"></script>
+		<script>
+			function show(){
+            	$(".table").show();
+            }
+            function hide(){
+            	$(".table").hide();
+            }
+     
+            $(".biaoge").hover(function(){
+            	show();
+            	var timer=setTimeout('hide()',3000);
+            })
+
+		</script>
+	</body>
+</html>

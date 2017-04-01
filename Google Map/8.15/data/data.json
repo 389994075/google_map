@@ -1,0 +1,65 @@
+[
+  {
+    "id": "000",
+    "address": "北京",
+    "pinying":"beijing",
+    "train": "K333",
+    "time": "8:00",
+    "lat": "15.00",
+    "lon": "102.00"
+  },
+  {
+    "id": "001",
+    "address": "北戴河",
+    "pinying":"beidaihe",
+    "train": "K337",
+    "time": "20:00",
+    "lat": "75.00",
+    "lon": "73.00"
+  },
+  {
+    "id": "002",
+    "address": "北安",
+    "pinying":"beijingbeijing",
+    "train": "K335",
+    "time": "3:00",
+    "lat": "36.00",
+    "lon": "25.00"
+  },{
+    "id": "003",
+    "address": "肯尼亚",
+    "pinying":"kenniya",
+    "train": "K389",
+    "time": "8:00",
+    "lat": "15.00",
+    "lon": "102.00"
+  },
+  {
+    "id": "004",
+    "address": "上海",
+    "pinying":"shanghai",
+    "train": "K336",
+    "time": "20:00",
+    "lat": "75.00",
+    "lon": "73.00"
+  },
+  {
+    "id": "005",
+    "address": "上海虹桥站",
+    "pinying":"shanghaihongqiaozhan",
+    "train": "K456",
+    "time": "3:00",
+    "lat": "36.00",
+    "lon": "25.00"
+  },
+  {
+    "id": "006",
+    "address": "上海火车站",
+    "pinying":"shanghaihuochezhan",
+    "train": "K785",
+    "time": "3:00",
+    "lat": "36.00",
+    "lon": "25.00"
+  }
+  
+]

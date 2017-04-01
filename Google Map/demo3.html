@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>我的地图3</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body {  
+            text-algin: center;  
+        }  
+		#content{  
+            height: 100%;  
+            width: 100%;      
+        }  
+        #map{  
+            widows: 100%;   
+            height: 700px;      
+        }  
+        #message{  
+            text-align: center;      
+        }  
+        #dosomething{  
+            text-align: center;      
+        }  
+        #dosomething .button{  
+            text-align: right;      
+        }  
+	</style>
+</head>
+<body>
+	<div id="content">  
+        <div id="map"></div>  
+        <div id="message"></div>  
+        <div id="dosomething">  
+		   	备注：<input type="text" id="remark" value="嘿嘿，好地方"/>  
+			纬度：<input type="text" id="lat" value="-0.023559"/>  
+		   	经度：<input type="text" id="lon" value="37.90619300000003"/>  
+		    <input type="button" value="显示位置" onclick="showme();"/> 
+			大小：<select id="citysize" title="地图显示的比例" onchange="showme();">  
+	            <option value="1">1</option>  
+	            <option value="2">2</option>  
+	            <option value="3" selected="selected">3</option>  
+	            <option value="4">4</option>  
+	            <option value="5">5</option>  
+	            <option value="6">6</option>  
+	            <option value="7">7</option>  
+	            <option value="8">8</option>  
+	            <option value="9">9</option>  
+	            <option value="10">10</option>  
+	            <option value="11">11</option>  
+	            <option value="12">12</option>  
+	            <option value="13">13</option>  
+	            <option value="14">14</option>  
+	            <option value="15">15</option>  
+	            <option value="16">16</option>  
+	            <option value="17">17</option>  
+		    </select>  
+        </div>  
+    </div> 
+    <script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyCS6KlQiaLg37b1BUbKf6iu3Q0TSW5brKw"></script>
+	<script type="text/javascript">  
+        var map; // 定义地图  
+        function load(){  
+            if (GBrowserIsCompatible()){  //辨别浏览器是否兼容
+		        map = new GMap2(document.getElementById("map"));//调用google函数画一个初图
+		        map.addControl(new GLargeMapControl());
+		        //添加地图组件　一个在Google Local之中使用的大的移动缩放控件，显示在地图的左上角
+		        map.addControl(new GMapTypeControl());
+		        //添加地图组件　让用户切换地图类型的按钮控件(例如地图模式和卫星图模式)
+		        map.addControl(new GScaleControl());
+		        //添加地图组件　地图比例尺控件
+		        map.addControl(new GOverviewMapControl(new GSize(100, 100)));
+		        //添加地图组件　一个可折叠的鹰眼地图，在地图的角落
+		        
+		        GEvent.addListener(map, "moveend", function(){//捕捉　当地图上发生改变的时候调用
+		            var center = map.getCenter();  
+		            document.getElementById("message").innerHTML = "\u4e2d\u5fc3\u7ecf\u7eac" + 				
+		            center.toString();//转码：中心经纬
+		        });  
+		        
+		        map.setCenter(new GLatLng(-0.023559,37.90619300000003),4);//设置地图的中心点  
+		        map.setMapType(G_HYBRID_MAP);//设置地图的类型　现在用的混合视图　
+		        //(G_NORMAL_MAP >简图,G_SATELLITE_MAP >卫星图,G_HYBRID_MAP >混合图)
+		        
+		        map.enableScrollWheelZoom();　//让地图启用鼠标滚轮  
+		        map.enableDoubleClickZoom();　//让地图启用鼠标双击  
+		        map.enableContinuousZoom();　//让地图启动滑动效果  
+            }else {  
+                alert("您的浏览器不支持谷歌地图！");//您的浏览器不兼容  
+            }  
+        }  
+        function showme(){  
+            var cityname = document.getElementById('remark').value;//获得　备注  
+            var citylat = document.getElementById('lat').value;　//获得　纬度  
+            var citylon = document.getElementById('lon').value;　//获得　经度  
+            var citysize = document.getElementById('citysize').value;　//获得　地图比例  
+            if(citylat == '' && citylon == ''){  
+                window.alert('请输入经度和纬度');  
+                return;  
+            }else if(citylat == ''){
+                window.alert('请输入纬度');  
+                return;  
+            }else if(citylon == ''){
+                window.alert('请输入经度');  
+                return;  
+            }  
+            if(cityname == ''){  
+                cityname='没有备注';  
+            }   	
+            var point = new GLatLng(citylat,citylon);//创建一个坐标  
+            var marker = new GMarker(point,{draggable:true});//创建一个标注　并启动它的拖拽功能  
+            GEvent.addListener(marker, "dragstart", function () {//当标注开始拖拽时发生  
+                    map.closeInfoWindow();  
+            });  
+            GEvent.addListener(marker, "dragend", function () {//当标注完成拖拽时发生  
+                document.getElementById('lat').value = marker.getPoint().lat();  
+                document.getElementById('lon').value = marker.getPoint().lng();  
+                marker.openInfoWindowHtml("\u786e\u5b9a\u597d\u81ea\u5df1\u7684\u4f4d\u7f6e\u54e6");  
+            });  
+            GEvent.addListener(marker, "mouseover", function () {//当鼠标经过标注时发生  
+                marker.openInfoWindow("<span>注释："+cityname+"</span>");  
+            });  
+            GEvent.addListener(marker, "mouseout", function () {//当鼠标离开标注时发生  
+                map.closeInfoWindow();  
+            });  
+            map.addOverlay(marker);//在地图上添加标注  
+            document.getElementById('lat').value = marker.getPoint().lat();//修改纬度显示  
+            document.getElementById('lon').value = marker.getPoint().lng();//修改经度显示  
+            map.setCenter(point, parseFloat(citysize));//设置地图的中心点  
+        }  
+        window.onload=load;　//页面读取时开始加载  
+        window.onunload=GUnload;　//一个内存销毁函数　防止内存泄露  
+    </script>  
+</body>
+</html>
+
+

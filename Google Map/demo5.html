@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"> 
+<head id="Head1" runat="server">  
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+    <title>google map</title>   
+</header>
+<body onload="load()" onunload="GUnload()">  
+ 	<div style="height:20px"></div>  
+    <div style="float: left; text-align: center; height: 550;">  
+        <form action="#" onsubmit="showAddr(this.address.value); return false">  
+        	地点名:<input type="text" name="address" value="苏州虎丘" style="width: 190px" />  
+        	<input type="submit" value="查找" />  
+        </form>  
+    </div>  
+ 	<div style="height:50px"></div>  
+    	<div id="map" style="width: 100%; height: 600px; border: solid 1px #999; float: left">  
+    </div>
+        <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAJmM4oHHk-rqX9L9qiuc-JRRO_N-AwaXOHpj4q9noXJ7oi8JM0hTY3x2vIcYDXr6J1ZdK7Cfue1OK5Q&hl=zh-CN&sensor=false"  
+        type="text/javascript"></script> 
+    <script type="text/javascript">  
+    var i=1;  
+    var map;  
+    var currentOverlay = null;  
+    var geocoder;  
+    var address;  
+    var gdir;  
+    var addressMarker;  
+    function load() {  
+ 		if (GBrowserIsCompatible()) {  //确定Api能否兼容当前浏览器  
+            map = new GMap2(document.getElementById("map"));  //调用google函数画一个初图  
+            var point = new GLatLng(31.294035589372354,120.57870384694675);   //初始化地图
+            map.setCenter(point,14); //设置地图的中心点 
+            map.addControl(new GLargeMapControl()); //添加地图组件 移动缩放控件 
+        	map.addControl(new GMapTypeControl());  //添加地图组件 地图类型按钮控件        
+         	var customUI = map.getDefaultUI();  
+         	
+	        customUI.maptypes.hybrid = false;  
+	        map.enableDoubleClickZoom();  
+	        map.setUI(customUI);  
+	         
+            var marker = new GMarker(point); //创建一个标注
+    		map.addOverlay(marker);  //在地图上添加标注 
+      		geocoder = new GClientGeocoder();  //地址解析
+      		geocoder.getLocations("苏州虎丘", function (response) {  
+			place = response.Placemark[0];  
+			marker.openInfoWindowHtml(  
+				'<b>纬度:</b>' + place.Point.coordinates[1] + '<br>' + 
+				'<b>经度:</b>' + place.Point.coordinates[0] + '<br>' +  
+				'<b>地址:</b>' + place.address + '<br>' +  
+				'<b>精准度:</b>' + place.AddressDetails.Accuracy + '<br>' +  
+				'<b>缩放级别为:</b>' + map.getZoom()+'<br>'+     
+				'<b>国家代码:</b> ' + place.AddressDetails.Country.CountryNameCode);  
+		   	})  
+	        GEvent.addListener(map, 'click',getAddress);//内置搜索  
+	        //map.addControl(new google.maps.LocalSearch(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,20)));  
+	  		map.addControl(new GScaleControl());//添加地图组件　地图比例尺控件  
+	    	map.addControl(new GOverviewMapControl(new GSize(200, 200))); //添加地图组件　一个可折叠的鹰眼地图，在地图的角落  
+	    }  
+    }  
+    function removeCurrentOverlay() {  
+        map.removeOverlay(currentOverlay);  
+    }  
+  
+  	function getAddress(overlay, latlng) {  
+      if (latlng != null) {  
+        address = latlng;  
+        geocoder.getLocations(latlng, showAddress);  
+      }  
+    }  
+  
+    function showAddress(response) {  
+    	map.clearOverlays();  
+    	if (!response || response.Status.code != 200) {  
+        	alert("HTTP状态代码:" + response.Status.code);  
+      	}else{  
+        	place = response.Placemark[0];  
+        	point = new GLatLng(place.Point.coordinates[1],  
+                            place.Point.coordinates[0]);  
+        	marker = new GMarker(point);  
+    
+        	map.addOverlay(marker);  
+        	marker.openInfoWindowHtml(  
+        	'<b>纬经度:</b>' + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + '<br>' +  
+        	'<b>地址:</b>' + place.address + '<br>' +  
+        	'<b>精准度:</b>' + place.AddressDetails.Accuracy + '<br>' +  
+        	'<b>缩放级别为:</b>' + map.getZoom()+'<br>'+     
+        	'<b>国家代码:</b> ' + place.AddressDetails.Country.CountryNameCode);  
+      	}  
+    }  
+  
+    ///外置搜索，只能搜地址  
+    function showAddr(address) {  
+		if (geocoder) {  
+        	geocoder.getLatLng( address,function(point) {  
+	            if (!point) {  
+	            	alert("不能解析: " + address);  
+	            }else{  
+	            	map.setCenter(point, 14);  
+	            }  
+    			geocoder.getLocations(address, showAddress);  
+          	});  
+      	}  
+    }  
+    </script> 
+</body>  
+</html>  

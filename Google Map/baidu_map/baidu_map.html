@@ -1,0 +1,1917 @@
+<!doctype html>
+<html>
+<head>
+<title>自定义主题活动-互动吧</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta charset="utf-8" />
+<meta property="qc:admins" content="241045133560426375747716" />
+<meta name="baidu-site-verification" content="dNifqp8wX6" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="HandheldFriendly" content="true" />
+<link rel="dns-prefetch" href="//cdn.hudongba.com" />
+<link rel="dns-prefetch" href="//static.hudongba.com" />
+<link rel="dns-prefetch" href="//cdn.hudongba.com" />
+<link rel="apple-touch-icon" href="http://img1.hudongba.com/static_v4/images/other/icon_72x72.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" size="16x16 24x24 32x32" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+<!-- 作者：qiutian 时间：2015-06-28 描述：PC公共css-->
+  <link rel="stylesheet" href="http://quick.hudongba.com/static_grunt/20160823_113316/css/pc/common.20160823_113316.min.css">
+  <link rel="stylesheet" href="http://quick.hudongba.com/static_grunt/20160823_113316/css/pc/post.20160823_113316.min.css">
+  <link href="http://quick.hudongba.com/static_v4/css/pc/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<!-- endbuild --> 
+<style>[ms-controller],[ms-important]{display:none}</style>
+<script src="http://quick.hudongba.com/static_v4/js/lib/jquery-1.7.2.min.js"></script>
+<script>
+var _pub_client = "pc";
+var _imgCdn="http://img1.hudongba.com";
+var _domain="http://www.hdb.com/";
+var _HDB_SOURCE_KEY = "hdb_source";
+var _HDB_POS_KEY = "hdb_pos";
+var _isNoAlertUser = "";// 详情页外链点击是否不弹出提示框
+var _fmShezhi;
+var dataForShare={
+  weixin_icon:"http://cdn.hudongba.com/images/share/other_weixin_msg_3.png",
+  weixin_tl_icon:"http://cdn.hudongba.com/images/share/other_weixin_tl_3.png",
+  weixin_url:_domain,
+  qq_icon:"http://cdn.hudongba.com/images/share/other_qq_3.png",
+  weibo_icon:"http://cdn.hudongba.com/images/share/other_weibo_3.png",
+  url:_domain,
+  title:"互动吧，免费发布、传播活动，最大化享受微信传播红利。",
+  description:"互动吧，免费提供活动发布、管理、传播、收款等全环节服务，通过互动吧，您可以轻松在微信朋友圈、聊天群里组织各类活动。",
+  sms:"互动吧，免费提供活动发布、管理、传播、收款等全环节服务，通过互动吧，您可以轻松在微信朋友圈、聊天群里组织各类活动。http://hudong.ba",
+  appId:"wx2eb9d27e0e24ec11",
+  callback:function(){_$(_api3._shareCount,"info_id=0&info_type=other");}
+};
+var appInfo={
+  app_v:4.0,
+  info_v:2.1,
+  system:"",
+  pub_system:"pc"
+};
+var _config={
+  _showBtn:1
+};
+
+</script>
+</head>
+
+<body class="e7">
+<script src="http://quick.hudongba.com/static_v4/js/lib/xiuxiu.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+  xiuxiu.setLaunchVars("nav", "/edit");
+  xiuxiu.setLaunchVars("cropPresets", "12:7");
+  xiuxiu.setLaunchVars("customMenu", ["edit", "effect"]);
+  xiuxiu.embedSWF("altContent", 1, "890", "500", "xiuxiuEditor");
+  xiuxiu.onInit = function(id) {
+    xiuxiu.setUploadURL("http://web.upload.meitu.com/image_upload.php");
+    xiuxiu.setUploadType(2);
+    xiuxiu.setUploadDataFieldName("upload_file");
+  }
+  xiuxiu.onUploadResponse = function(data) {
+    var _url = JSON.parse(data).original_pic;
+    _$(_api3._posterLoad, "img_url=" + _url, _posterLoad._ok);
+    _tc._hide('altContentoutside');
+    _loading._show('加载中...');
+    clearFlash();
+  }
+  xiuxiu.onClose = function(id) {
+    _tc._hide('altContentoutside');
+    _edit_pic_SafePoster._clearFile();
+    _loading._hide();
+    _edit_pic_SafePoster._id = '';
+  }
+  xiuxiu.onBeforeUpload = function(data, id) {
+    var _size = data.size,
+      _width = data.width,
+      _height = data.height;
+    if (_size > 4 * 1024 * 1024) {
+      _toast._show("图片不能超过4M");
+      return false;
+    } else if (_size < 0.05 * 1024 * 1024) {
+      _toast._show("图片不能小于50K");
+      return false;
+    } else if (_width < 120) {
+      _toast._show("图片宽度不能小于120");
+      return false;
+    } else if (_height < 70) {
+      _toast._show("图片高度不能小于70");
+      return false;
+    } else if (_width / _height > 1.72 || _width / _height < 1.7) {
+      _toast._show("图片宽高比必须为12:7，请使用裁剪功能处理图片后再进行保存");
+      return false;
+    }
+    return true;
+  }
+}
+</script>
+
+<div class="temporary_subject_wrap">
+    <a href="http://www.hdb.com/activity/821"></a>
+    <img class="close" src="http://img1.hudongba.com/static_v4/images/other/temporary_subject_pc_close.png" alt="关闭">
+</div>
+<div class="header_public">
+  <div class="header_public_t">
+    <div class="mem_r" style="display:none;">
+      <a id="a_top_pic" href="/manage/member">
+              <img class="userPic default_img" src="" alt="" onerror="this.src='http://img1.hudongba.com/static_v4/images/other/face_default_200.png'"/>
+      </a>
+      <a id="a_top_user" href="/manage/member"></a>
+      <ul class="a_top_nav">
+        <li><a href="/manage/member">个人中心</a></li>
+        <li><a href="/manage/post_info">我发布的活动</a></li>
+        <li><a href="/manage/join_info">我参与的活动</a></li>
+        <li><a href="/timeline/">我的主页</a></li>
+        <li><a id="a_top_login_out" class="a_hui" href="javascript:void(0)" onclick="_user._toLogout()">退出</a></li>
+      </ul>
+    </div>
+    <div class="mem_r2">
+      <a id="a_top_login" href="javascript:void(0)" onclick="_user._toLogin()" rel="nofollow">登录</a>
+      <a id="a_top_register"  class="a_hui" href="javascript:void(0)" onclick="_user._toRegister()" rel="nofollow">注册</a>
+    </div>
+    <div class="mem_l">
+      <span class="sX">|</span><a class="fudao" href="/help" target="_blank" rel="nofollow">帮助中心</a>
+    </div>
+  </div>
+  <div class="header_public_b">
+    <div class="header_public_main">
+      <div class="header_public_logo">
+        <h1>
+         <a href="/">
+                      <img title="互动吧" alt="互动吧" src="http://img1.hudongba.com/static_v4/images/manage/logo_5.png" />
+        </a>
+       </h1>
+      </div>
+    <div class="user_address">
+                  <div class="user_address_t"><span name="-1" id="-1">全国</span></div>
+        <ul class="user_address_ul">
+          <li><a class="" href="javascript:void(0);" ontouchstart="" name="-1" onclick="area('-1','全国','','-1')" id="-1">全国</a></li>
+          <li><a class="" href="javascript:void(0);" name="beijing" onclick="area('4a','北京','','beijing')" ontouchstart="" id="4a">北京</a></li>
+          <li><a class="" href="javascript:void(0);" name="shanghai" onclick="area('qa','上海','','shanghai')" ontouchstart="" id="qa">上海</a></li>
+          <li><a class="" href="javascript:void(0);" name="guangzhou" onclick="area('j7','广州','','guangzhou')" ontouchstart="" id="j7">广州</a></li>
+          <li><a class="" href="javascript:void(0);" name="shenzhen" onclick="area('67','深圳','','shenzhen')" ontouchstart="" id="67">深圳</a></li>
+          <li><a class="" href="javascript:void(0);" name="suzhou" onclick="area('3e','苏州','','suzhou')" ontouchstart="" id="3e">苏州</a></li>
+          <li><a class="" href="javascript:void(0);" name="changsha" onclick="area('bk','长沙','','changsha')" ontouchstart="" id="bk">长沙</a></li>
+          <li><a class="" href="javascript:void(0);" name="hangzhou" onclick="area('a6','杭州','','hangzhou')" ontouchstart="" id="a6">杭州</a></li>
+          <li><a class="" href="javascript:void(0);" name="chengdu" onclick="area('nj','成都','','chengdu')" ontouchstart="" id="nj">成都</a></li>
+        </ul>
+      </div>
+      <ul class="header_public_nav">
+        <li><a href="javascript:void(0)" onclick="_tc._show('indexTc');_hdbQr._tab('sjB','sjBan');" rel="nofollow">下载App</a></li>
+        <li><a href="/party_field.html">找场地</a></li>
+        <li><a id="find" href="/find/">找活动</a></li>
+        <li><a href="/post" id="addPost" rel="nofollow">+发活动</a></li>
+        <li><a id="home" href="/">首页</a></li>
+      </ul>
+      <div class="header_public_search">
+        <input name="" value="" type="text" placeholder="搜索活动" id="pub_search" />
+        <a href="javascript:void(0)" id="searchBtn" onclick=""><img title="搜索" src="http://img1.hudongba.com/static_v4/images/other/searcnBtn.png" /></a>
+        <div class="search_key">
+          <img  src="http://img1.hudongba.com/static_v4/images/other/searchK_jiao.png" />
+          <div class="k">
+            <p>大家都在搜</p>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('821活动节');doSearch('821活动节');">821活动节</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('徒步');doSearch('徒步');">徒步</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('DIY');doSearch('DIY');">DIY</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('旅行');doSearch('旅行');">旅行</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('瑜伽');doSearch('瑜伽');">瑜伽</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('相亲');doSearch('相亲');">相亲</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('马拉松');doSearch('马拉松');">马拉松</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('亲子游');doSearch('亲子游');">亲子游</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('音乐会');doSearch('音乐会');">音乐会</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('路演');doSearch('路演');">路演</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('美食');doSearch('美食');">美食</a>
+                    <a href="javascript:void(0)" onclick="$('#pub_search').val('创客');doSearch('创客');">创客</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="header_public_bot"></div>
+<script >
+//js动态创建form 提交表单
+function formSubmit(action,areaid,areaname) {
+    var turnForm = document.createElement("form");   
+    //一定要加入到body中！！   
+    document.body.appendChild(turnForm);
+    turnForm.method = 'get';
+  turnForm.action = action;
+  turnForm.target = '_blank';
+  //创建隐藏表单
+  var areaId = document.createElement("input");
+    areaId.setAttribute("name","area_id");
+    areaId.setAttribute("type","hidden");
+    areaId.setAttribute("value",areaid);
+    turnForm.appendChild(areaId);
+  var areaName = document.createElement("input");
+    areaName.setAttribute("name","area_name");
+    areaName.setAttribute("type","hidden");
+    areaName.setAttribute("value",areaname);
+    turnForm.appendChild(areaName);
+ 
+    turnForm.submit();
+}
+
+//js动态创建form 提交表单，在当前页
+function formSubmitNoBlank(action,areaid,areaname) {
+    var turnForm = document.createElement("form");   
+    //一定要加入到body中！！   
+    document.body.appendChild(turnForm);
+    turnForm.method = 'get';
+  turnForm.action = action;
+  //创建隐藏表单
+  var areaId = document.createElement("input");
+    areaId.setAttribute("name","area_id");
+    areaId.setAttribute("type","hidden");
+    areaId.setAttribute("value",areaid);
+    turnForm.appendChild(areaId);
+  var areaName = document.createElement("input");
+    areaName.setAttribute("name","area_name");
+    areaName.setAttribute("type","hidden");
+    areaName.setAttribute("value",areaname);
+    turnForm.appendChild(areaName);
+ 
+    turnForm.submit();
+}
+
+function area(id,name,flag,code){
+//  if(flag != 1 && flag != 2){
+//    _$asyn("/wap/service",{"area_id":id,"area_name":name,"areaFlag":flag});
+//    $("#addPost").attr("href","javascript:formSubmit('/post',\""+id+"\",\""+name+"\");")//发布
+//    $("#find").attr("href","javascript:formSubmit('/find/-1.html',\""+id+"\",\""+name+"\");")//找活动
+//    $("#home").attr("href","javascript:formSubmit('/',\""+id+"\",\""+name+"\");")//首页
+//    $(".user_address_t").html("<span name=\""+code+"\" id=\""+id+"\">"+name+"</span>");
+//  }
+}
+/*$("#pub_search").blur(function(){
+    setTimeout(function(){
+        $(".search_key").hide();
+    }, 200);
+});
+$("#pub_search").focus(function(){
+  $(".search_key").show();
+});*/
+$(".header_public_search").mouseover(function(){
+  $(".search_key").show();
+});
+$(".header_public_search").mouseout(function(){
+  $(".search_key").hide();
+});
+</script>
+
+<form id="image_upload" target="submitIframe" enctype="multipart/form-data" method="post" action="/post/api:img">
+<input type="hidden" name="infoType" value="posterimage">
+<div id="altContentoutside" style="display:none;">
+  <div id="getPicfileTcOutside">
+    <input id="getPicfileTc" type="file" name="file" title="重新选图" onchange="_edit_pic_SafePoster._upload('getPicfileTc')" />
+  </div>
+  <div id="altContent"></div>
+</div>
+
+<div id="tc_posterSec" style="display:none;">
+  <div class="tc_poster_topUp">
+    <div class="topUp_outside">
+      <img src="http://img1.hudongba.com/static_v4/images/other/help_icon_jia.png" />
+      <p><strong>请从电脑上传图片</strong><span>图片尺寸为：900*525,，图片小于4M</span></p>
+      <div class="getPicfileOutK">
+        <input id="getPicfile" type="file" name="file" title="上传海报" onchange="_edit_pic_SafePoster._upload('getPicfile')" />
+      </div>
+    </div>
+  </div>
+  <div class="tc_picList">
+    <p class="posterKutit">从海报模板库选择</p>
+    <div class="posterKu_main">
+        <span class="posterKu_style">聚会娱乐</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_15.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_15.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_19.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_19.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_1.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_1.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_18.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_18.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_13.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_2.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_2.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_11.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_11.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_3.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_3.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_7.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_7.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_6.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_6.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_14.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_14.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_juhui_8.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_juhui_8.jpg" /><i></i></a>
+        <span class="posterKu_style">旅游户外</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_18.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_18.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_9.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_9.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_1.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_1.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_2.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_2.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_14.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_14.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_15.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_15.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_3.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_3.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_20.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_20.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_7.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_7.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_13.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_10.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_10.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_lvyou_4.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_lvyou_4.jpg" /><i></i></a>
+        <span class="posterKu_style">亲子幼教</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_9.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_9.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_20.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_20.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_7.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_7.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_5.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_5.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_3.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_3.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_2.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_2.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_13.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_11.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_11.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_1.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_1.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_18.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_18.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_4.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_4.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_qinzi_19.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_qinzi_19.jpg" /><i></i></a>
+        <span class="posterKu_style">商务会议</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_13.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_17.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_17.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_14.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_14.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_05.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_05.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_19.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_19.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_16.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_16.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_09.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_09.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_10.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_10.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_18.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_18.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_15.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_15.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_03.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_03.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_shangwu_07.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_shangwu_07.jpg" /><i></i></a>
+        <span class="posterKu_style">文化艺术</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_03.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_03.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_17.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_17.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_07.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_07.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_12.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_12.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_20.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_20.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_08.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_08.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_04.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_04.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_16.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_16.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_05.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_05.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_19.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_19.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_06.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_06.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_wenhua_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_wenhua_13.jpg" /><i></i></a>
+        <span class="posterKu_style">演出赛事</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_3.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_3.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_15.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_15.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_5.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_5.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_2.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_2.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_19.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_19.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_12.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_12.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_7.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_7.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_9.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_9.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_8.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_8.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_1.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_1.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_13.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yanchu_17.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yanchu_17.jpg" /><i></i></a>
+        <span class="posterKu_style">运动健身</span>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_18.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_18.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_01.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_01.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_10.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_10.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_16.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_16.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_13.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_13.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_19.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_19.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_11.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_11.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_20.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_20.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_17.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_17.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_07.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_07.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_05.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_05.jpg" /><i></i></a>
+        <a href="javascript:void(0)"><img src="http://img.small.hudongba.com/static_v4/images/post/poster_image_yundong_02.jpg@!poster_image_preview" data-src="http://img1.hudongba.com/static_v4/images/post/poster_image_yundong_02.jpg" /><i></i></a>
+      <input id="posterInputUrl" type="hidden" />
+    </div>
+  </div>
+  <div class="tc_poster_Bottom">
+    <a id="addOkbtn" href="javascript:void(0)" onclick="">确认添加海报</a><a class="outBtn" href="javascript:void(0)" onclick="_tc._hide('tc_posterSec')">取消</a>
+  </div>
+</div>
+</form>
+<div class="wrap">
+  <div class="container">
+    <div id="post_form">
+      <ul class="post_main_ul">
+        
+        
+        <li class="post_main_li hdZt">
+          <div class="post_main_l_tit"><b class="red">*</b><span>活动主题</span></div>
+          <div id="post_main_r_K_title" class="red_outK">
+            <div class="post_main_r" style="position:relative;">
+              <input type="text" class="post_title post_title_Party" id="post_party_title_101" onpropertychange="dochangeTitle('post_party_title_101');_checkRed._title()" oninput="dochangeTitle('post_party_title_101');_checkRed._title()" placeholder="请输入活动主题" maxlength="70" />
+            </div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>请输入活动主题</span></p></div>
+          </div>
+        </li>
+        <li class="post_main_li hdPoster">
+          <div class="post_main_l_tit"><b class="red"></b><span>活动海报</span></div>
+          <div id="post_main_r_K_poster" class="red_outK">
+            <div class="post_main_r" style="height:123px;">
+              <div class="posterimg_outside"><img class="posterImg_pic" src="http://img1.hudongba.com/static_v4/images/post/posterImg.png" /></div>
+              <a href="javascript:void(0)" onclick="_tc._show('tc_posterSec');" class="posterimg_add_btn">添加海报</a>
+              <a href="javascript:void(0)" onclick="_posterLoad._del();" class="posterimg_del_btn">删除海报</a>
+              <p class="posterimg_wxts">温馨提示：图片尺寸建议为：900*525，图片小于4M</p>
+              <input type="hidden" class="post_poster_pic" />
+            </div>
+            <div class="post_main_note"></div>
+          </div>
+        </li>
+        <li class="post_main_li hdTime1">
+          <div class="post_main_l_tit"><b class="red">*</b><span>活动时间</span></div>
+          <div id="post_main_r_K_partyTime1" class="red_outK">
+            <div class="post_main_r">
+              <div class="k_time_date"><input type="text" class="post_tiMe1 post_d_t_input" readonly="readonly" onchange="dochangeV_time('sDateYMD'),_startdateChange()" placeholder="开始时间" id="sDateYMD"/></div>
+              <div class="k_time_hour" id="k_time_hout1"><input type="text" class="post_hoUr" readonly="readonly"  onchange="alert(1)" id="sDateHM"/><img src="http://img1.hudongba.com/static_v4/images/post/jiao.png" alt="" /></div>
+              <div class="k_time_ge"></div>
+              <div class="k_time_date"><input type="text" class="post_tiMe2 post_d_t_input" readonly="readonly" onchange="dochangeV_time('eDateYMD')" placeholder="结束时间" id="eDateYMD"/></div>
+              <div class="k_time_hour" id="k_time_hout2"><input type="text" class="post_hoUr" readonly="readonly" onblur="" id="eDateHM"/><img src="http://img1.hudongba.com/static_v4/images/post/jiao.png" alt="" /></div>
+            </div>
+            <div id="joinTime_control"><a href="javascript:void(0)" class="thisOver"><img src="http://img1.hudongba.com/static_v4/images/detail/pop_yesorno.png" alt="" /></a><span>活动结束之前均可报名</span></div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>请设置活动起止时间</span></p></div>
+          </div>
+        </li>
+        <li class="post_main_li hdTime2" style="display:none;">
+          <div class="post_main_l_tit"><b class="red"></b><span>报名截止时间</span></div>
+          <div id="post_main_r_K_partyTime2" class="red_outK">
+            <div class="post_main_r">
+              <div class="k_time_date"><input type="text" class="post_tiMe3 post_d_t_input" readonly="readonly" onchange="dochangeV_time('endtimeYMD')" placeholder="报名截止时间" id="endtimeYMD"/><a id="qK3" class="qK" title="清空" onclick="_qkInput._hide('endtimeYMD','qK3');"></a></div>
+              <div class="k_time_hour" id="k_time_hout3"><input type="text" class="post_hoUr" readonly="readonly" onblur="" id="endtimeHM"/><img src="http://img1.hudongba.com/static_v4/images/post/jiao.png" alt="" /></div>
+            </div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>请设置报名截止时间</span></p></div>
+          </div>
+        </li>
+        <li class="post_main_li hdAddress">
+          <div class="post_main_l_tit"><b class="red">*</b><span>活动地点</span><a id="qK4" class="qK" title="清空"></a></div>
+          <div id="post_main_r_K_address" class="red_outK">
+            <div class="post_main_r">
+              <div class="k_site" onclick="clickBtn(event)"><input type="text" class="post_siTe jiao" readonly="readonly" onblur="" placeholder="选择城市" id="post_party_place_city_101"/>
+                <a id="qK4" class="qK" title="清空"></a>
+                <div class="k_site_K" id="k_site_K">
+                  <div class="k_site_K_top">
+                    <ul>
+                      <li class="thisOver"><a>热门</a></li>
+                      <li><a>ABCD</a></li>
+                      <li><a>EFGH</a></li>
+                      <li><a>JKLM</a></li>
+                      <li><a>NOPQRS</a></li>
+                      <li><a>TUVW</a></li>
+                      <li><a>XYZ</a></li>
+                    </ul>
+                    <div class="thisClose" onclick="clickBtn2(event)"><img src="http://img1.hudongba.com/static_v4/images/post/share_qr_close3_20.png" alt="" title="关闭" /></div>
+                  </div>
+                  <div class="k_site_K_city">
+                          <div class="k_site_K_city_zhu" id="K_city_style0" style="display:block;">
+                          <div class="K_city_lin">
+                              <span>hot</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('201',this)"><a>北京</a></li>
+                            <li onclick="_partyPostPC._changeCity('472',this)"><a>成都</a></li>
+                            <li onclick="_partyPostPC._changeCity('200',this)"><a>重庆</a></li>
+                            <li onclick="_partyPostPC._changeCity('362',this)"><a>长沙</a></li>
+                            <li onclick="_partyPostPC._changeCity('422',this)"><a>大连</a></li>
+                            <li onclick="_partyPostPC._changeCity('265',this)"><a>广州</a></li>
+                            <li onclick="_partyPostPC._changeCity('509',this)"><a>杭州</a></li>
+                            <li onclick="_partyPostPC._changeCity('397',this)"><a>南京</a></li>
+                            <li onclick="_partyPostPC._changeCity('3620',this)"><a>青岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('202',this)"><a>上海</a></li>
+                            <li onclick="_partyPostPC._changeCity('266',this)"><a>深圳</a></li>
+                            <li onclick="_partyPostPC._changeCity('421',this)"><a>沈阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('408',this)"><a>苏州</a></li>
+                            <li onclick="_partyPostPC._changeCity('203',this)"><a>天津</a></li>
+                            <li onclick="_partyPostPC._changeCity('336',this)"><a>武汉</a></li>
+                            <li onclick="_partyPostPC._changeCity('353',this)"><a>厦门</a></li>
+                            <li onclick="_partyPostPC._changeCity('451',this)"><a>西安</a></li>
+                            <li onclick="_partyPostPC._changeCity('3828',this)"><a>线上活动</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                          <div class="k_site_K_city_zhu" id="K_city_style1">
+                          <div class="K_city_lin">
+                              <span>A</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('205',this)"><a>澳门</a></li>
+                            <li onclick="_partyPostPC._changeCity('244',this)"><a>安庆</a></li>
+                            <li onclick="_partyPostPC._changeCity('289',this)"><a>安顺</a></li>
+                            <li onclick="_partyPostPC._changeCity('322',this)"><a>安阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('429',this)"><a>鞍山</a></li>
+                            <li onclick="_partyPostPC._changeCity('460',this)"><a>安康</a></li>
+                            <li onclick="_partyPostPC._changeCity('490',this)"><a>阿坝</a></li>
+                            <li onclick="_partyPostPC._changeCity('544',this)"><a>阿拉善</a></li>
+                            <li onclick="_partyPostPC._changeCity('578',this)"><a>阿里</a></li>
+                            <li onclick="_partyPostPC._changeCity('589',this)"><a>阿克苏</a></li>
+                            <li onclick="_partyPostPC._changeCity('595',this)"><a>阿勒泰</a></li>
+                            <li onclick="_partyPostPC._changeCity('596',this)"><a>阿拉尔</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>B</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('201',this)"><a>北京</a></li>
+                            <li onclick="_partyPostPC._changeCity('238',this)"><a>蚌埠</a></li>
+                            <li onclick="_partyPostPC._changeCity('254',this)"><a>白银</a></li>
+                            <li onclick="_partyPostPC._changeCity('294',this)"><a>毕节</a></li>
+                            <li onclick="_partyPostPC._changeCity('298',this)"><a>保定</a></li>
+                            <li onclick="_partyPostPC._changeCity('384',this)"><a>白山</a></li>
+                            <li onclick="_partyPostPC._changeCity('427',this)"><a>本溪</a></li>
+                            <li onclick="_partyPostPC._changeCity('449',this)"><a>滨州</a></li>
+                            <li onclick="_partyPostPC._changeCity('456',this)"><a>宝鸡</a></li>
+                            <li onclick="_partyPostPC._changeCity('485',this)"><a>巴中</a></li>
+                            <li onclick="_partyPostPC._changeCity('500',this)"><a>保山</a></li>
+                            <li onclick="_partyPostPC._changeCity('527',this)"><a>北海</a></li>
+                            <li onclick="_partyPostPC._changeCity('530',this)"><a>百色</a></li>
+                            <li onclick="_partyPostPC._changeCity('535',this)"><a>包头</a></li>
+                            <li onclick="_partyPostPC._changeCity('542',this)"><a>巴彦淖尔</a></li>
+                            <li onclick="_partyPostPC._changeCity('564',this)"><a>白沙县</a></li>
+                            <li onclick="_partyPostPC._changeCity('568',this)"><a>保亭县</a></li>
+                            <li onclick="_partyPostPC._changeCity('588',this)"><a>博尔塔拉</a></li>
+                            <li onclick="_partyPostPC._changeCity('590',this)"><a>巴音郭楞</a></li>
+                            <li onclick="_partyPostPC._changeCity('379',this)"><a>白城</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>C</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('472',this)"><a>成都</a></li>
+                            <li onclick="_partyPostPC._changeCity('200',this)"><a>重庆</a></li>
+                            <li onclick="_partyPostPC._changeCity('362',this)"><a>长沙</a></li>
+                            <li onclick="_partyPostPC._changeCity('240',this)"><a>滁州</a></li>
+                            <li onclick="_partyPostPC._changeCity('247',this)"><a>巢湖</a></li>
+                            <li onclick="_partyPostPC._changeCity('248',this)"><a>池州</a></li>
+                            <li onclick="_partyPostPC._changeCity('271',this)"><a>潮州</a></li>
+                            <li onclick="_partyPostPC._changeCity('302',this)"><a>承德</a></li>
+                            <li onclick="_partyPostPC._changeCity('303',this)"><a>沧州</a></li>
+                            <li onclick="_partyPostPC._changeCity('364',this)"><a>常德</a></li>
+                            <li onclick="_partyPostPC._changeCity('370',this)"><a>郴州</a></li>
+                            <li onclick="_partyPostPC._changeCity('377',this)"><a>长春</a></li>
+                            <li onclick="_partyPostPC._changeCity('406',this)"><a>常州</a></li>
+                            <li onclick="_partyPostPC._changeCity('423',this)"><a>朝阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('465',this)"><a>长治</a></li>
+                            <li onclick="_partyPostPC._changeCity('501',this)"><a>楚雄</a></li>
+                            <li onclick="_partyPostPC._changeCity('529',this)"><a>崇左</a></li>
+                            <li onclick="_partyPostPC._changeCity('536',this)"><a>赤峰</a></li>
+                            <li onclick="_partyPostPC._changeCity('562',this)"><a>澄迈</a></li>
+                            <li onclick="_partyPostPC._changeCity('565',this)"><a>昌江县</a></li>
+                            <li onclick="_partyPostPC._changeCity('574',this)"><a>昌都</a></li>
+                            <li onclick="_partyPostPC._changeCity('587',this)"><a>昌吉</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>D</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('422',this)"><a>大连</a></li>
+                            <li onclick="_partyPostPC._changeCity('261',this)"><a>定西</a></li>
+                            <li onclick="_partyPostPC._changeCity('309',this)"><a>大庆</a></li>
+                            <li onclick="_partyPostPC._changeCity('318',this)"><a>大兴安岭</a></li>
+                            <li onclick="_partyPostPC._changeCity('430',this)"><a>丹东</a></li>
+                            <li onclick="_partyPostPC._changeCity('437',this)"><a>德州</a></li>
+                            <li onclick="_partyPostPC._changeCity('438',this)"><a>东营</a></li>
+                            <li onclick="_partyPostPC._changeCity('462',this)"><a>大同</a></li>
+                            <li onclick="_partyPostPC._changeCity('475',this)"><a>德阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('486',this)"><a>达州</a></li>
+                            <li onclick="_partyPostPC._changeCity('505',this)"><a>德宏 </a></li>
+                            <li onclick="_partyPostPC._changeCity('507',this)"><a>迪庆</a></li>
+                            <li onclick="_partyPostPC._changeCity('508',this)"><a>大理</a></li>
+                            <li onclick="_partyPostPC._changeCity('559',this)"><a>东方</a></li>
+                            <li onclick="_partyPostPC._changeCity('560',this)"><a>定安</a></li>
+                            <li onclick="_partyPostPC._changeCity('276',this)"><a>东莞</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                          <div class="k_site_K_city_zhu" id="K_city_style2">
+                          <div class="K_city_lin">
+                              <span>E</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('342',this)"><a>鄂州</a></li>
+                            <li onclick="_partyPostPC._changeCity('348',this)"><a>恩施</a></li>
+                            <li onclick="_partyPostPC._changeCity('541',this)"><a>鄂尔多斯</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>F</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('237',this)"><a>阜阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('280',this)"><a>佛山</a></li>
+                            <li onclick="_partyPostPC._changeCity('418',this)"><a>抚州</a></li>
+                            <li onclick="_partyPostPC._changeCity('424',this)"><a>阜新</a></li>
+                            <li onclick="_partyPostPC._changeCity('426',this)"><a>抚顺</a></li>
+                            <li onclick="_partyPostPC._changeCity('528',this)"><a>防城港</a></li>
+                            <li onclick="_partyPostPC._changeCity('354',this)"><a>福州</a></li>
+                            <li onclick="_partyPostPC._changeCity('3618',this)"><a>非中国地区</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>G</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('265',this)"><a>广州</a></li>
+                            <li onclick="_partyPostPC._changeCity('264',this)"><a>甘南 </a></li>
+                            <li onclick="_partyPostPC._changeCity('287',this)"><a>贵阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('416',this)"><a>赣州</a></li>
+                            <li onclick="_partyPostPC._changeCity('473',this)"><a>广元</a></li>
+                            <li onclick="_partyPostPC._changeCity('477',this)"><a>广安</a></li>
+                            <li onclick="_partyPostPC._changeCity('491',this)"><a>甘孜</a></li>
+                            <li onclick="_partyPostPC._changeCity('521',this)"><a>桂林</a></li>
+                            <li onclick="_partyPostPC._changeCity('524',this)"><a>贵港</a></li>
+                            <li onclick="_partyPostPC._changeCity('550',this)"><a>固原</a></li>
+                            <li onclick="_partyPostPC._changeCity('604',this)"><a>果洛州</a></li>
+                            <li onclick="_partyPostPC._changeCity('726',this)"><a>高雄</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>H</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('509',this)"><a>杭州</a></li>
+                            <li onclick="_partyPostPC._changeCity('236',this)"><a>淮北</a></li>
+                            <li onclick="_partyPostPC._changeCity('239',this)"><a>淮南</a></li>
+                            <li onclick="_partyPostPC._changeCity('245',this)"><a>黄山</a></li>
+                            <li onclick="_partyPostPC._changeCity('250',this)"><a>亳州</a></li>
+                            <li onclick="_partyPostPC._changeCity('270',this)"><a>河源</a></li>
+                            <li onclick="_partyPostPC._changeCity('275',this)"><a>惠州</a></li>
+                            <li onclick="_partyPostPC._changeCity('296',this)"><a>邯郸</a></li>
+                            <li onclick="_partyPostPC._changeCity('305',this)"><a>衡水</a></li>
+                            <li onclick="_partyPostPC._changeCity('308',this)"><a>黑河</a></li>
+                            <li onclick="_partyPostPC._changeCity('311',this)"><a>鹤岗</a></li>
+                            <li onclick="_partyPostPC._changeCity('323',this)"><a>鹤壁</a></li>
+                            <li onclick="_partyPostPC._changeCity('341',this)"><a>黄冈</a></li>
+                            <li onclick="_partyPostPC._changeCity('343',this)"><a>黄石</a></li>
+                            <li onclick="_partyPostPC._changeCity('369',this)"><a>衡阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('373',this)"><a>怀化</a></li>
+                            <li onclick="_partyPostPC._changeCity('434',this)"><a>葫芦岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('450',this)"><a>菏泽</a></li>
+                            <li onclick="_partyPostPC._changeCity('457',this)"><a>汉中</a></li>
+                            <li onclick="_partyPostPC._changeCity('502',this)"><a>红河</a></li>
+                            <li onclick="_partyPostPC._changeCity('511',this)"><a>湖州</a></li>
+                            <li onclick="_partyPostPC._changeCity('531',this)"><a>河池</a></li>
+                            <li onclick="_partyPostPC._changeCity('533',this)"><a>贺州</a></li>
+                            <li onclick="_partyPostPC._changeCity('538',this)"><a>呼伦贝尔</a></li>
+                            <li onclick="_partyPostPC._changeCity('551',this)"><a>海口</a></li>
+                            <li onclick="_partyPostPC._changeCity('583',this)"><a>喀什</a></li>
+                            <li onclick="_partyPostPC._changeCity('586',this)"><a>哈密</a></li>
+                            <li onclick="_partyPostPC._changeCity('592',this)"><a>和田</a></li>
+                            <li onclick="_partyPostPC._changeCity('600',this)"><a>海东</a></li>
+                            <li onclick="_partyPostPC._changeCity('601',this)"><a>海贝</a></li>
+                            <li onclick="_partyPostPC._changeCity('602',this)"><a>黄南</a></li>
+                            <li onclick="_partyPostPC._changeCity('603',this)"><a>海南</a></li>
+                            <li onclick="_partyPostPC._changeCity('606',this)"><a>海西</a></li>
+                            <li onclick="_partyPostPC._changeCity('3621',this)"><a>淮安</a></li>
+                            <li onclick="_partyPostPC._changeCity('534',this)"><a>呼和浩特</a></li>
+                            <li onclick="_partyPostPC._changeCity('306',this)"><a>哈尔滨</a></li>
+                            <li onclick="_partyPostPC._changeCity('234',this)"><a>合肥</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                          <div class="k_site_K_city_zhu" id="K_city_style3">
+                          <div class="K_city_lin">
+                              <span>J</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('252',this)"><a>嘉峪关</a></li>
+                            <li onclick="_partyPostPC._changeCity('253',this)"><a>金昌</a></li>
+                            <li onclick="_partyPostPC._changeCity('256',this)"><a>酒泉</a></li>
+                            <li onclick="_partyPostPC._changeCity('273',this)"><a>揭阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('279',this)"><a>江门</a></li>
+                            <li onclick="_partyPostPC._changeCity('312',this)"><a>佳木斯</a></li>
+                            <li onclick="_partyPostPC._changeCity('315',this)"><a>鸡西</a></li>
+                            <li onclick="_partyPostPC._changeCity('325',this)"><a>焦作</a></li>
+                            <li onclick="_partyPostPC._changeCity('335',this)"><a>济源</a></li>
+                            <li onclick="_partyPostPC._changeCity('339',this)"><a>荆门</a></li>
+                            <li onclick="_partyPostPC._changeCity('345',this)"><a>荆州</a></li>
+                            <li onclick="_partyPostPC._changeCity('378',this)"><a>吉林</a></li>
+                            <li onclick="_partyPostPC._changeCity('409',this)"><a>江阴</a></li>
+                            <li onclick="_partyPostPC._changeCity('411',this)"><a>九江</a></li>
+                            <li onclick="_partyPostPC._changeCity('420',this)"><a>吉安</a></li>
+                            <li onclick="_partyPostPC._changeCity('433',this)"><a>锦州</a></li>
+                            <li onclick="_partyPostPC._changeCity('446',this)"><a>济宁</a></li>
+                            <li onclick="_partyPostPC._changeCity('466',this)"><a>晋城</a></li>
+                            <li onclick="_partyPostPC._changeCity('468',this)"><a>晋中</a></li>
+                            <li onclick="_partyPostPC._changeCity('512',this)"><a>嘉兴</a></li>
+                            <li onclick="_partyPostPC._changeCity('517',this)"><a>金华</a></li>
+                            <li onclick="_partyPostPC._changeCity('721',this)"><a>基隆</a></li>
+                            <li onclick="_partyPostPC._changeCity('725',this)"><a>嘉义</a></li>
+                            <li onclick="_partyPostPC._changeCity('412',this)"><a>景德镇</a></li>
+                            <li onclick="_partyPostPC._changeCity('436',this)"><a>济南</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>K</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('493',this)"><a>昆明</a></li>
+                            <li onclick="_partyPostPC._changeCity('582',this)"><a>克拉玛依</a></li>
+                            <li onclick="_partyPostPC._changeCity('591',this)"><a>克州</a></li>
+                            <li onclick="_partyPostPC._changeCity('3813',this)"><a>开封</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>L</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('246',this)"><a>六安</a></li>
+                            <li onclick="_partyPostPC._changeCity('251',this)"><a>兰州</a></li>
+                            <li onclick="_partyPostPC._changeCity('262',this)"><a>陇南</a></li>
+                            <li onclick="_partyPostPC._changeCity('263',this)"><a>临夏</a></li>
+                            <li onclick="_partyPostPC._changeCity('286',this)"><a>六盘水</a></li>
+                            <li onclick="_partyPostPC._changeCity('304',this)"><a>廊坊</a></li>
+                            <li onclick="_partyPostPC._changeCity('320',this)"><a>洛阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('328',this)"><a>漯河</a></li>
+                            <li onclick="_partyPostPC._changeCity('360',this)"><a>龙岩</a></li>
+                            <li onclick="_partyPostPC._changeCity('374',this)"><a>娄底</a></li>
+                            <li onclick="_partyPostPC._changeCity('382',this)"><a>辽源</a></li>
+                            <li onclick="_partyPostPC._changeCity('399',this)"><a>连云港</a></li>
+                            <li onclick="_partyPostPC._changeCity('428',this)"><a>辽阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('435',this)"><a>聊城</a></li>
+                            <li onclick="_partyPostPC._changeCity('444',this)"><a>临沂</a></li>
+                            <li onclick="_partyPostPC._changeCity('447',this)"><a>莱芜</a></li>
+                            <li onclick="_partyPostPC._changeCity('469',this)"><a>吕梁</a></li>
+                            <li onclick="_partyPostPC._changeCity('470',this)"><a>临汾</a></li>
+                            <li onclick="_partyPostPC._changeCity('480',this)"><a>乐山</a></li>
+                            <li onclick="_partyPostPC._changeCity('482',this)"><a>泸州</a></li>
+                            <li onclick="_partyPostPC._changeCity('492',this)"><a>凉山</a></li>
+                            <li onclick="_partyPostPC._changeCity('496',this)"><a>丽江</a></li>
+                            <li onclick="_partyPostPC._changeCity('499',this)"><a>临沧</a></li>
+                            <li onclick="_partyPostPC._changeCity('519',this)"><a>丽水</a></li>
+                            <li onclick="_partyPostPC._changeCity('522',this)"><a>柳州</a></li>
+                            <li onclick="_partyPostPC._changeCity('532',this)"><a>来宾</a></li>
+                            <li onclick="_partyPostPC._changeCity('545',this)"><a>兴安</a></li>
+                            <li onclick="_partyPostPC._changeCity('563',this)"><a>临高</a></li>
+                            <li onclick="_partyPostPC._changeCity('566',this)"><a>乐东县</a></li>
+                            <li onclick="_partyPostPC._changeCity('567',this)"><a>陵水县</a></li>
+                            <li onclick="_partyPostPC._changeCity('573',this)"><a>拉萨</a></li>
+                            <li onclick="_partyPostPC._changeCity('579',this)"><a>林芝</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>M</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('241',this)"><a>马鞍山</a></li>
+                            <li onclick="_partyPostPC._changeCity('269',this)"><a>梅州</a></li>
+                            <li onclick="_partyPostPC._changeCity('283',this)"><a>茂名</a></li>
+                            <li onclick="_partyPostPC._changeCity('316',this)"><a>牡丹江</a></li>
+                            <li onclick="_partyPostPC._changeCity('474',this)"><a>绵阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('487',this)"><a>眉山</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                          <div class="k_site_K_city_zhu" id="K_city_style4">
+                          <div class="K_city_lin">
+                              <span>N</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('397',this)"><a>南京</a></li>
+                            <li onclick="_partyPostPC._changeCity('330',this)"><a>南阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('355',this)"><a>南平</a></li>
+                            <li onclick="_partyPostPC._changeCity('361',this)"><a>宁德</a></li>
+                            <li onclick="_partyPostPC._changeCity('404',this)"><a>南通</a></li>
+                            <li onclick="_partyPostPC._changeCity('476',this)"><a>南充</a></li>
+                            <li onclick="_partyPostPC._changeCity('479',this)"><a>内江</a></li>
+                            <li onclick="_partyPostPC._changeCity('506',this)"><a>怒江</a></li>
+                            <li onclick="_partyPostPC._changeCity('520',this)"><a>南宁</a></li>
+                            <li onclick="_partyPostPC._changeCity('571',this)"><a>南沙群岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('577',this)"><a>那曲</a></li>
+                            <li onclick="_partyPostPC._changeCity('410',this)"><a>南昌</a></li>
+                            <li onclick="_partyPostPC._changeCity('510',this)"><a>宁波</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>P</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('260',this)"><a>平凉</a></li>
+                            <li onclick="_partyPostPC._changeCity('321',this)"><a>平顶山</a></li>
+                            <li onclick="_partyPostPC._changeCity('326',this)"><a>濮阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('357',this)"><a>莆田</a></li>
+                            <li onclick="_partyPostPC._changeCity('415',this)"><a>萍乡</a></li>
+                            <li onclick="_partyPostPC._changeCity('432',this)"><a>盘锦</a></li>
+                            <li onclick="_partyPostPC._changeCity('484',this)"><a>攀枝花</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>Q</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('3620',this)"><a>青岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('259',this)"><a>庆阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('267',this)"><a>清远</a></li>
+                            <li onclick="_partyPostPC._changeCity('291',this)"><a>黔西南州</a></li>
+                            <li onclick="_partyPostPC._changeCity('292',this)"><a>黔东南州</a></li>
+                            <li onclick="_partyPostPC._changeCity('293',this)"><a>黔南州</a></li>
+                            <li onclick="_partyPostPC._changeCity('299',this)"><a>秦皇岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('313',this)"><a>七台河</a></li>
+                            <li onclick="_partyPostPC._changeCity('350',this)"><a>潜江</a></li>
+                            <li onclick="_partyPostPC._changeCity('358',this)"><a>泉州</a></li>
+                            <li onclick="_partyPostPC._changeCity('467',this)"><a>忻州</a></li>
+                            <li onclick="_partyPostPC._changeCity('494',this)"><a>曲靖</a></li>
+                            <li onclick="_partyPostPC._changeCity('515',this)"><a>衢州</a></li>
+                            <li onclick="_partyPostPC._changeCity('526',this)"><a>钦州</a></li>
+                            <li onclick="_partyPostPC._changeCity('557',this)"><a>琼海</a></li>
+                            <li onclick="_partyPostPC._changeCity('569',this)"><a>琼中县</a></li>
+                            <li onclick="_partyPostPC._changeCity('307',this)"><a>齐齐哈尔</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>R</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('443',this)"><a>日照</a></li>
+                            <li onclick="_partyPostPC._changeCity('576',this)"><a>日喀则</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>S</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('202',this)"><a>上海</a></li>
+                            <li onclick="_partyPostPC._changeCity('266',this)"><a>深圳</a></li>
+                            <li onclick="_partyPostPC._changeCity('421',this)"><a>沈阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('408',this)"><a>苏州</a></li>
+                            <li onclick="_partyPostPC._changeCity('235',this)"><a>宿州</a></li>
+                            <li onclick="_partyPostPC._changeCity('268',this)"><a>韶关</a></li>
+                            <li onclick="_partyPostPC._changeCity('272',this)"><a>汕头</a></li>
+                            <li onclick="_partyPostPC._changeCity('274',this)"><a>汕尾</a></li>
+                            <li onclick="_partyPostPC._changeCity('314',this)"><a>双鸭山</a></li>
+                            <li onclick="_partyPostPC._changeCity('317',this)"><a>绥化</a></li>
+                            <li onclick="_partyPostPC._changeCity('329',this)"><a>三门峡</a></li>
+                            <li onclick="_partyPostPC._changeCity('331',this)"><a>商丘</a></li>
+                            <li onclick="_partyPostPC._changeCity('337',this)"><a>十堰</a></li>
+                            <li onclick="_partyPostPC._changeCity('347',this)"><a>随州</a></li>
+                            <li onclick="_partyPostPC._changeCity('352',this)"><a>神农架</a></li>
+                            <li onclick="_partyPostPC._changeCity('356',this)"><a>三明</a></li>
+                            <li onclick="_partyPostPC._changeCity('372',this)"><a>邵阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('380',this)"><a>松原</a></li>
+                            <li onclick="_partyPostPC._changeCity('381',this)"><a>四平</a></li>
+                            <li onclick="_partyPostPC._changeCity('400',this)"><a>宿迁</a></li>
+                            <li onclick="_partyPostPC._changeCity('417',this)"><a>上饶</a></li>
+                            <li onclick="_partyPostPC._changeCity('459',this)"><a>商洛</a></li>
+                            <li onclick="_partyPostPC._changeCity('464',this)"><a>朔州</a></li>
+                            <li onclick="_partyPostPC._changeCity('478',this)"><a>遂宁</a></li>
+                            <li onclick="_partyPostPC._changeCity('498',this)"><a>思茅</a></li>
+                            <li onclick="_partyPostPC._changeCity('514',this)"><a>绍兴</a></li>
+                            <li onclick="_partyPostPC._changeCity('547',this)"><a>石嘴山</a></li>
+                            <li onclick="_partyPostPC._changeCity('584',this)"><a>石河子</a></li>
+                            <li onclick="_partyPostPC._changeCity('575',this)"><a>山南</a></li>
+                            <li onclick="_partyPostPC._changeCity('552',this)"><a>三亚</a></li>
+                            <li onclick="_partyPostPC._changeCity('295',this)"><a>石家庄</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                          <div class="k_site_K_city_zhu" id="K_city_style5">
+                          <div class="K_city_lin">
+                              <span>T</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('203',this)"><a>天津</a></li>
+                            <li onclick="_partyPostPC._changeCity('243',this)"><a>铜陵</a></li>
+                            <li onclick="_partyPostPC._changeCity('255',this)"><a>天水</a></li>
+                            <li onclick="_partyPostPC._changeCity('290',this)"><a>铜仁</a></li>
+                            <li onclick="_partyPostPC._changeCity('297',this)"><a>唐山</a></li>
+                            <li onclick="_partyPostPC._changeCity('351',this)"><a>天门</a></li>
+                            <li onclick="_partyPostPC._changeCity('383',this)"><a>通化</a></li>
+                            <li onclick="_partyPostPC._changeCity('403',this)"><a>泰州</a></li>
+                            <li onclick="_partyPostPC._changeCity('425',this)"><a>铁岭</a></li>
+                            <li onclick="_partyPostPC._changeCity('448',this)"><a>泰安</a></li>
+                            <li onclick="_partyPostPC._changeCity('453',this)"><a>铜川</a></li>
+                            <li onclick="_partyPostPC._changeCity('516',this)"><a>台州</a></li>
+                            <li onclick="_partyPostPC._changeCity('539',this)"><a>通辽</a></li>
+                            <li onclick="_partyPostPC._changeCity('561',this)"><a>屯昌</a></li>
+                            <li onclick="_partyPostPC._changeCity('594',this)"><a>塔城</a></li>
+                            <li onclick="_partyPostPC._changeCity('597',this)"><a>图木舒克</a></li>
+                            <li onclick="_partyPostPC._changeCity('722',this)"><a>台中</a></li>
+                            <li onclick="_partyPostPC._changeCity('723',this)"><a>台南</a></li>
+                            <li onclick="_partyPostPC._changeCity('720',this)"><a>台北</a></li>
+                            <li onclick="_partyPostPC._changeCity('585',this)"><a>吐鲁番</a></li>
+                            <li onclick="_partyPostPC._changeCity('461',this)"><a>太原</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>W</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('336',this)"><a>武汉</a></li>
+                            <li onclick="_partyPostPC._changeCity('242',this)"><a>芜湖</a></li>
+                            <li onclick="_partyPostPC._changeCity('258',this)"><a>武威</a></li>
+                            <li onclick="_partyPostPC._changeCity('441',this)"><a>潍坊</a></li>
+                            <li onclick="_partyPostPC._changeCity('442',this)"><a>威海</a></li>
+                            <li onclick="_partyPostPC._changeCity('455',this)"><a>渭南</a></li>
+                            <li onclick="_partyPostPC._changeCity('503',this)"><a>文山</a></li>
+                            <li onclick="_partyPostPC._changeCity('518',this)"><a>温州</a></li>
+                            <li onclick="_partyPostPC._changeCity('523',this)"><a>梧州</a></li>
+                            <li onclick="_partyPostPC._changeCity('537',this)"><a>乌海</a></li>
+                            <li onclick="_partyPostPC._changeCity('540',this)"><a>乌兰察布</a></li>
+                            <li onclick="_partyPostPC._changeCity('548',this)"><a>吴忠</a></li>
+                            <li onclick="_partyPostPC._changeCity('555',this)"><a>五指山</a></li>
+                            <li onclick="_partyPostPC._changeCity('556',this)"><a>文昌</a></li>
+                            <li onclick="_partyPostPC._changeCity('558',this)"><a>万宁</a></li>
+                            <li onclick="_partyPostPC._changeCity('581',this)"><a>乌鲁木齐</a></li>
+                            <li onclick="_partyPostPC._changeCity('598',this)"><a>五家渠</a></li>
+                            <li onclick="_partyPostPC._changeCity('407',this)"><a>无锡</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                          <div class="k_site_K_city_zhu" id="K_city_style6">
+                          <div class="K_city_lin">
+                              <span>X</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('353',this)"><a>厦门</a></li>
+                            <li onclick="_partyPostPC._changeCity('451',this)"><a>西安</a></li>
+                            <li onclick="_partyPostPC._changeCity('3828',this)"><a>线上活动</a></li>
+                            <li onclick="_partyPostPC._changeCity('204',this)"><a>香港</a></li>
+                            <li onclick="_partyPostPC._changeCity('249',this)"><a>宣城</a></li>
+                            <li onclick="_partyPostPC._changeCity('300',this)"><a>邢台</a></li>
+                            <li onclick="_partyPostPC._changeCity('324',this)"><a>新乡</a></li>
+                            <li onclick="_partyPostPC._changeCity('327',this)"><a>许昌</a></li>
+                            <li onclick="_partyPostPC._changeCity('334',this)"><a>信阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('338',this)"><a>襄樊</a></li>
+                            <li onclick="_partyPostPC._changeCity('340',this)"><a>孝感</a></li>
+                            <li onclick="_partyPostPC._changeCity('344',this)"><a>咸宁</a></li>
+                            <li onclick="_partyPostPC._changeCity('349',this)"><a>仙桃</a></li>
+                            <li onclick="_partyPostPC._changeCity('368',this)"><a>湘潭</a></li>
+                            <li onclick="_partyPostPC._changeCity('376',this)"><a>湘西</a></li>
+                            <li onclick="_partyPostPC._changeCity('398',this)"><a>徐州</a></li>
+                            <li onclick="_partyPostPC._changeCity('414',this)"><a>新余</a></li>
+                            <li onclick="_partyPostPC._changeCity('454',this)"><a>咸阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('504',this)"><a>西双版纳</a></li>
+                            <li onclick="_partyPostPC._changeCity('543',this)"><a>锡林郭勒</a></li>
+                            <li onclick="_partyPostPC._changeCity('570',this)"><a>西沙群岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('599',this)"><a>西宁</a></li>
+                            <li onclick="_partyPostPC._changeCity('724',this)"><a>新竹</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>Y</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('282',this)"><a>云浮</a></li>
+                            <li onclick="_partyPostPC._changeCity('284',this)"><a>阳江</a></li>
+                            <li onclick="_partyPostPC._changeCity('310',this)"><a>伊春</a></li>
+                            <li onclick="_partyPostPC._changeCity('346',this)"><a>宜昌</a></li>
+                            <li onclick="_partyPostPC._changeCity('365',this)"><a>益阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('366',this)"><a>岳阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('371',this)"><a>永州</a></li>
+                            <li onclick="_partyPostPC._changeCity('385',this)"><a>延边</a></li>
+                            <li onclick="_partyPostPC._changeCity('401',this)"><a>盐城</a></li>
+                            <li onclick="_partyPostPC._changeCity('402',this)"><a>扬州</a></li>
+                            <li onclick="_partyPostPC._changeCity('413',this)"><a>鹰潭</a></li>
+                            <li onclick="_partyPostPC._changeCity('419',this)"><a>宜春</a></li>
+                            <li onclick="_partyPostPC._changeCity('431',this)"><a>营口</a></li>
+                            <li onclick="_partyPostPC._changeCity('452',this)"><a>延安</a></li>
+                            <li onclick="_partyPostPC._changeCity('458',this)"><a>榆林</a></li>
+                            <li onclick="_partyPostPC._changeCity('463',this)"><a>阳泉</a></li>
+                            <li onclick="_partyPostPC._changeCity('471',this)"><a>运城</a></li>
+                            <li onclick="_partyPostPC._changeCity('483',this)"><a>宜宾</a></li>
+                            <li onclick="_partyPostPC._changeCity('489',this)"><a>雅安</a></li>
+                            <li onclick="_partyPostPC._changeCity('495',this)"><a>玉溪</a></li>
+                            <li onclick="_partyPostPC._changeCity('525',this)"><a>玉林</a></li>
+                            <li onclick="_partyPostPC._changeCity('546',this)"><a>银川</a></li>
+                            <li onclick="_partyPostPC._changeCity('593',this)"><a>伊犁哈萨克</a></li>
+                            <li onclick="_partyPostPC._changeCity('605',this)"><a>玉树</a></li>
+                            <li onclick="_partyPostPC._changeCity('440',this)"><a>烟台</a></li>
+                            </ul>
+                          </div>
+                          <div class="K_city_lin">
+                              <span>Z</span>
+                              <ul>
+                            <li onclick="_partyPostPC._changeCity('257',this)"><a>张掖</a></li>
+                            <li onclick="_partyPostPC._changeCity('277',this)"><a>珠海</a></li>
+                            <li onclick="_partyPostPC._changeCity('278',this)"><a>中山</a></li>
+                            <li onclick="_partyPostPC._changeCity('281',this)"><a>肇庆</a></li>
+                            <li onclick="_partyPostPC._changeCity('285',this)"><a>湛江</a></li>
+                            <li onclick="_partyPostPC._changeCity('288',this)"><a>遵义</a></li>
+                            <li onclick="_partyPostPC._changeCity('301',this)"><a>张家口</a></li>
+                            <li onclick="_partyPostPC._changeCity('332',this)"><a>周口</a></li>
+                            <li onclick="_partyPostPC._changeCity('333',this)"><a>驻马店</a></li>
+                            <li onclick="_partyPostPC._changeCity('359',this)"><a>漳州</a></li>
+                            <li onclick="_partyPostPC._changeCity('363',this)"><a>张家界</a></li>
+                            <li onclick="_partyPostPC._changeCity('367',this)"><a>株洲</a></li>
+                            <li onclick="_partyPostPC._changeCity('405',this)"><a>镇江</a></li>
+                            <li onclick="_partyPostPC._changeCity('439',this)"><a>淄博</a></li>
+                            <li onclick="_partyPostPC._changeCity('445',this)"><a>枣庄</a></li>
+                            <li onclick="_partyPostPC._changeCity('481',this)"><a>自贡</a></li>
+                            <li onclick="_partyPostPC._changeCity('488',this)"><a>资阳</a></li>
+                            <li onclick="_partyPostPC._changeCity('497',this)"><a>昭通</a></li>
+                            <li onclick="_partyPostPC._changeCity('513',this)"><a>舟山</a></li>
+                            <li onclick="_partyPostPC._changeCity('549',this)"><a>中卫</a></li>
+                            <li onclick="_partyPostPC._changeCity('553',this)"><a>儋州</a></li>
+                            <li onclick="_partyPostPC._changeCity('572',this)"><a>中沙群岛</a></li>
+                            <li onclick="_partyPostPC._changeCity('319',this)"><a>郑州</a></li>
+                            </ul>
+                          </div>
+                        </div>
+  
+                  </div>
+                  <div class="k_site_K_qu" >
+                    <ul id="cityAreaDiv">
+                      <li><a>朝阳区</a></li>
+                      <li><a>丰台区</a></li>
+                      <li><a>海滨区</a></li>
+                      <li><a>房山区</a></li>
+                      <li><a>大兴区</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="post_site_K">
+                <input type="text" class="post_siTe2 jiao" onkeyup="_placeSearch._init(event)" onpropertychange="_t._set('post_party_place_site_101_1',$(this).val());_checkRed._partyAddress()" oninput="_t._set('post_party_place_site_101_1',$(this).val());_checkRed._partyAddress()" placeholder="活动地址" id="post_party_place_site_101"/>
+                <input type="hidden" id="lngX" name="lngX" value=""/> 
+                <input type="hidden" id="latY" name="latY" value=""/> 
+                <span id="mapMark" onclick="_placeSearch._mark();" style="display:none;">已标记</span>
+              </div>
+              <div class="post_site_set">
+                <div class="post_map" id="mapContainer"></div>
+                <a href="javascript:void(0)" onclick="_gaode._findCenter();"><img class="mapD" src="http://img1.hudongba.com/static_v4/images/post/mapD.png" alt="" /></a>
+                  <div class="field_list_wrap_big" >
+                    <div class="close" onclick='width_auto($(this));'><span></span></div>
+                    <div class='field_list_wrap'>
+                        <div class='top'>场地推荐</div>
+                        <div class="field_box" id="panel"></div>
+                    </div>
+                  </div>
+                  <!--申请场地驻入按钮及弹窗-->
+                  <div class="field_btn" onclick="_tc._show('field_find_tc');"><a href="javascript:;"></a></div>
+              </div>
+            </div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>请设置活动举办的地点</span></p></div>
+          </div>
+        </li>
+
+        <li class="post_main_li hdStyle">
+          <div class="post_main_l_tit"><b class="red"></b><span>活动类型</span></div>
+          <div id="post_main_r_K_hdstyle" class="red_outK">
+            <div class="post_main_r">
+              <div class="k_style">
+                <input type="text" class="jiao" readonly="readonly" onclick="clickBtn3(event)" placeholder="选择类型" category_id="" value="" id="post_party_style_101" />
+                <a id="qK6" class="qK" title="清空" onclick="clickBtn4(event)"></a>
+                <div class="k_site_K3" id="k_site_K3">
+                  <ul>
+
+                          <li><a id="485" onclick="_partyPostPC._changeStyle(this)">运动与健身</a></li>
+                          <li><a id="486" onclick="_partyPostPC._changeStyle(this)">派对与娱乐</a></li>
+                          <li><a id="488" onclick="_partyPostPC._changeStyle(this)">文艺与手工</a></li>
+                          <li><a id="484" onclick="_partyPostPC._changeStyle(this)">旅游与户外</a></li>
+                          <li><a id="493" onclick="_partyPostPC._changeStyle(this)">亲子与幼教</a></li>
+                          <li><a id="617" onclick="_partyPostPC._changeStyle(this)">创业与投资</a></li>
+                          <li><a id="606" onclick="_partyPostPC._changeStyle(this)">IT与互联网</a></li>
+                          <li><a id="487" onclick="_partyPostPC._changeStyle(this)">职业与培训</a></li>
+                          <li><a id="492" onclick="_partyPostPC._changeStyle(this)">公益与慈善</a></li>
+                          <li><a id="490" onclick="_partyPostPC._changeStyle(this)">会议与展览</a></li>
+                          <li><a id="489" onclick="_partyPostPC._changeStyle(this)">体验与促销</a></li>
+
+                  </ul>
+                </div>
+              </div>
+              <div class="post_style_K">
+                <input type="text" class="jiao" readonly="readonly" onclick="clickBtn6(event)" placeholder="具体分类" category_id="" value="">
+                <a id="qK7" class="qK" title="清空" onclick="clickBtn7(event)"></a>
+                <div class="k_site_K7" id="k_site_K7">
+
+                    <ul id="child_category_485" style="display: none;">
+                            <li><a id="512" onclick="_partyPostPC._changeStyle2(this)">爱奔跑</a></li>
+                            <li><a id="513" onclick="_partyPostPC._changeStyle2(this)">马拉松</a></li>
+                            <li><a id="514" onclick="_partyPostPC._changeStyle2(this)">徒步</a></li>
+                            <li><a id="515" onclick="_partyPostPC._changeStyle2(this)">篮球</a></li>
+                            <li><a id="516" onclick="_partyPostPC._changeStyle2(this)">足球</a></li>
+                            <li><a id="517" onclick="_partyPostPC._changeStyle2(this)">羽毛球</a></li>
+                            <li><a id="518" onclick="_partyPostPC._changeStyle2(this)">网球</a></li>
+                            <li><a id="519" onclick="_partyPostPC._changeStyle2(this)">滑冰</a></li>
+                            <li><a id="520" onclick="_partyPostPC._changeStyle2(this)">滑雪</a></li>
+                            <li><a id="521" onclick="_partyPostPC._changeStyle2(this)">瑜伽</a></li>
+                            <li><a id="522" onclick="_partyPostPC._changeStyle2(this)">骑行</a></li>
+                            <li><a id="523" onclick="_partyPostPC._changeStyle2(this)">养生</a></li>
+                            <li><a id="524" onclick="_partyPostPC._changeStyle2(this)">跆拳道</a></li>
+                            <li><a id="525" onclick="_partyPostPC._changeStyle2(this)">攀岩</a></li>
+                            <li><a id="526" onclick="_partyPostPC._changeStyle2(this)">舞蹈</a></li>
+                            <li><a id="527" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_486" style="display: none;">
+                            <li><a id="528" onclick="_partyPostPC._changeStyle2(this)">小剧场</a></li>
+                            <li><a id="529" onclick="_partyPostPC._changeStyle2(this)">演唱会</a></li>
+                            <li><a id="530" onclick="_partyPostPC._changeStyle2(this)">音乐会</a></li>
+                            <li><a id="531" onclick="_partyPostPC._changeStyle2(this)">观影</a></li>
+                            <li><a id="532" onclick="_partyPostPC._changeStyle2(this)">公开派对</a></li>
+                            <li><a id="533" onclick="_partyPostPC._changeStyle2(this)">歌友会</a></li>
+                            <li><a id="534" onclick="_partyPostPC._changeStyle2(this)">相亲会</a></li>
+                            <li><a id="535" onclick="_partyPostPC._changeStyle2(this)">舞会</a></li>
+                            <li><a id="536" onclick="_partyPostPC._changeStyle2(this)">同学会</a></li>
+                            <li><a id="537" onclick="_partyPostPC._changeStyle2(this)">同乡会</a></li>
+                            <li><a id="538" onclick="_partyPostPC._changeStyle2(this)">兴趣交流</a></li>
+                            <li><a id="539" onclick="_partyPostPC._changeStyle2(this)">车友会</a></li>
+                            <li><a id="540" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_488" style="display: none;">
+                            <li><a id="547" onclick="_partyPostPC._changeStyle2(this)">读书</a></li>
+                            <li><a id="548" onclick="_partyPostPC._changeStyle2(this)">字画</a></li>
+                            <li><a id="549" onclick="_partyPostPC._changeStyle2(this)">品鉴</a></li>
+                            <li><a id="550" onclick="_partyPostPC._changeStyle2(this)">舞蹈</a></li>
+                            <li><a id="551" onclick="_partyPostPC._changeStyle2(this)">戏剧</a></li>
+                            <li><a id="552" onclick="_partyPostPC._changeStyle2(this)">话剧</a></li>
+                            <li><a id="553" onclick="_partyPostPC._changeStyle2(this)">舞台剧</a></li>
+                            <li><a id="554" onclick="_partyPostPC._changeStyle2(this)">音乐</a></li>
+                            <li><a id="555" onclick="_partyPostPC._changeStyle2(this)">花艺</a></li>
+                            <li><a id="556" onclick="_partyPostPC._changeStyle2(this)">香道佛学</a></li>
+                            <li><a id="557" onclick="_partyPostPC._changeStyle2(this)">传统文化</a></li>
+                            <li><a id="558" onclick="_partyPostPC._changeStyle2(this)">艺术展</a></li>
+                            <li><a id="559" onclick="_partyPostPC._changeStyle2(this)">茶艺茶道</a></li>
+                            <li><a id="560" onclick="_partyPostPC._changeStyle2(this)">手工DIY</a></li>
+                            <li><a id="561" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_484" style="display: none;">
+                            <li><a id="494" onclick="_partyPostPC._changeStyle2(this)">旅行度假</a></li>
+                            <li><a id="495" onclick="_partyPostPC._changeStyle2(this)">周边游</a></li>
+                            <li><a id="496" onclick="_partyPostPC._changeStyle2(this)">自驾游</a></li>
+                            <li><a id="497" onclick="_partyPostPC._changeStyle2(this)">露营烧烤</a></li>
+                            <li><a id="498" onclick="_partyPostPC._changeStyle2(this)">徒步慢走</a></li>
+                            <li><a id="499" onclick="_partyPostPC._changeStyle2(this)">赏花</a></li>
+                            <li><a id="500" onclick="_partyPostPC._changeStyle2(this)">登山眺远</a></li>
+                            <li><a id="501" onclick="_partyPostPC._changeStyle2(this)">爱奔跑</a></li>
+                            <li><a id="502" onclick="_partyPostPC._changeStyle2(this)">极限挑战</a></li>
+                            <li><a id="503" onclick="_partyPostPC._changeStyle2(this)">摄影摄像</a></li>
+                            <li><a id="504" onclick="_partyPostPC._changeStyle2(this)">果蔬采摘</a></li>
+                            <li><a id="505" onclick="_partyPostPC._changeStyle2(this)">踏青踏春</a></li>
+                            <li><a id="506" onclick="_partyPostPC._changeStyle2(this)">拓展游戏</a></li>
+                            <li><a id="507" onclick="_partyPostPC._changeStyle2(this)">野外探险</a></li>
+                            <li><a id="508" onclick="_partyPostPC._changeStyle2(this)">游园会</a></li>
+                            <li><a id="509" onclick="_partyPostPC._changeStyle2(this)">自由骑行</a></li>
+                            <li><a id="510" onclick="_partyPostPC._changeStyle2(this)">绘画写生</a></li>
+                            <li><a id="511" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_493" style="display: none;">
+                            <li><a id="594" onclick="_partyPostPC._changeStyle2(this)">手工DIY</a></li>
+                            <li><a id="595" onclick="_partyPostPC._changeStyle2(this)">绘本阅读</a></li>
+                            <li><a id="596" onclick="_partyPostPC._changeStyle2(this)">亲子摄影</a></li>
+                            <li><a id="597" onclick="_partyPostPC._changeStyle2(this)">素质拓展</a></li>
+                            <li><a id="598" onclick="_partyPostPC._changeStyle2(this)">职业体验</a></li>
+                            <li><a id="599" onclick="_partyPostPC._changeStyle2(this)">家庭教育</a></li>
+                            <li><a id="600" onclick="_partyPostPC._changeStyle2(this)">探索自然</a></li>
+                            <li><a id="601" onclick="_partyPostPC._changeStyle2(this)">儿童选秀</a></li>
+                            <li><a id="602" onclick="_partyPostPC._changeStyle2(this)">兴趣启蒙</a></li>
+                            <li><a id="603" onclick="_partyPostPC._changeStyle2(this)">少儿培训</a></li>
+                            <li><a id="604" onclick="_partyPostPC._changeStyle2(this)">儿童剧</a></li>
+                            <li><a id="605" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_617" style="display: none;">
+                            <li><a id="622" onclick="_partyPostPC._changeStyle2(this)">理财</a></li>
+                            <li><a id="623" onclick="_partyPostPC._changeStyle2(this)">电商</a></li>
+                            <li><a id="624" onclick="_partyPostPC._changeStyle2(this)">资源对接</a></li>
+                            <li><a id="625" onclick="_partyPostPC._changeStyle2(this)">创业大赛</a></li>
+                            <li><a id="627" onclick="_partyPostPC._changeStyle2(this)">创业分享</a></li>
+                            <li><a id="628" onclick="_partyPostPC._changeStyle2(this)">路演</a></li>
+                            <li><a id="629" onclick="_partyPostPC._changeStyle2(this)">投融资</a></li>
+                            <li><a id="626" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_606" style="display: none;">
+                            <li><a id="609" onclick="_partyPostPC._changeStyle2(this)">移动互联网</a></li>
+                            <li><a id="610" onclick="_partyPostPC._changeStyle2(this)">互联网金融</a></li>
+                            <li><a id="611" onclick="_partyPostPC._changeStyle2(this)">大数据</a></li>
+                            <li><a id="612" onclick="_partyPostPC._changeStyle2(this)">云计算</a></li>
+                            <li><a id="618" onclick="_partyPostPC._changeStyle2(this)">通信</a></li>
+                            <li><a id="619" onclick="_partyPostPC._changeStyle2(this)">物联网</a></li>
+                            <li><a id="620" onclick="_partyPostPC._changeStyle2(this)">O2O</a></li>
+                            <li><a id="621" onclick="_partyPostPC._changeStyle2(this)">移动医疗</a></li>
+                            <li><a id="630" onclick="_partyPostPC._changeStyle2(this)">互联网</a></li>
+                            <li><a id="616" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_487" style="display: none;">
+                            <li><a id="541" onclick="_partyPostPC._changeStyle2(this)">管理能力</a></li>
+                            <li><a id="542" onclick="_partyPostPC._changeStyle2(this)">职业能力</a></li>
+                            <li><a id="543" onclick="_partyPostPC._changeStyle2(this)">培训发展</a></li>
+                            <li><a id="544" onclick="_partyPostPC._changeStyle2(this)">人力资源</a></li>
+                            <li><a id="545" onclick="_partyPostPC._changeStyle2(this)">市场营销</a></li>
+                            <li><a id="546" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_492" style="display: none;">
+                            <li><a id="589" onclick="_partyPostPC._changeStyle2(this)">环保</a></li>
+                            <li><a id="590" onclick="_partyPostPC._changeStyle2(this)">植树</a></li>
+                            <li><a id="592" onclick="_partyPostPC._changeStyle2(this)">志愿服务</a></li>
+                            <li><a id="593" onclick="_partyPostPC._changeStyle2(this)">募捐</a></li>
+                            <li><a id="591" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_490" style="display: none;">
+                            <li><a id="569" onclick="_partyPostPC._changeStyle2(this)">电子商务</a></li>
+                            <li><a id="570" onclick="_partyPostPC._changeStyle2(this)">峰会沙龙</a></li>
+                            <li><a id="572" onclick="_partyPostPC._changeStyle2(this)">实战分享</a></li>
+                            <li><a id="574" onclick="_partyPostPC._changeStyle2(this)">招商会</a></li>
+                            <li><a id="575" onclick="_partyPostPC._changeStyle2(this)">众筹会</a></li>
+                            <li><a id="576" onclick="_partyPostPC._changeStyle2(this)">科技展</a></li>
+                            <li><a id="577" onclick="_partyPostPC._changeStyle2(this)">艺术展</a></li>
+                            <li><a id="578" onclick="_partyPostPC._changeStyle2(this)">文化展</a></li>
+                            <li><a id="580" onclick="_partyPostPC._changeStyle2(this)">互联网</a></li>
+                            <li><a id="579" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+                    <ul id="child_category_489" style="display: none;">
+                            <li><a id="562" onclick="_partyPostPC._changeStyle2(this)">试吃体验</a></li>
+                            <li><a id="563" onclick="_partyPostPC._changeStyle2(this)">折扣促销</a></li>
+                            <li><a id="564" onclick="_partyPostPC._changeStyle2(this)">优惠券</a></li>
+                            <li><a id="565" onclick="_partyPostPC._changeStyle2(this)">试驾体验</a></li>
+                            <li><a id="566" onclick="_partyPostPC._changeStyle2(this)">团购</a></li>
+                            <li><a id="567" onclick="_partyPostPC._changeStyle2(this)">其他</a></li>
+                    </ul>
+
+                </div>
+              </div>
+            </div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>活动类型</span></p></div>
+          </div>
+        </li>
+
+        <li class="post_main_li hdRichtext">
+          <div class="post_main_l_tit"><b class="red">*</b><span>活动详情</span></div>
+          <div id="post_main_r_K_richtext" class="red_outK">
+            <div class="post_main_r post_main_r_fwb" style="position:relative;">
+<textarea id="post_party_content" noplaceholder="no" placeholder="" class="post_this_content" style="width:100%;height:300px; background:#FCFCFC;"></textarea>
+<div id="f"></div>
+<div id="post_party_content_richtext_bar" class="richtext_bar">
+  <ul class="bqgnK">
+    <li class="bqgnK_li02">
+      <a title="单张上传图片" ontouchstart="" href="javascript:void(0);"></a>
+      <div class="richtext_bar_pic_upfile">
+        <form id="post_party_content_upload" target="_upload" enctype="multipart/form-data" method="post" action="/post/api:img">
+          <input id="post_party_content_upload_file" type="file" onchange="_richText._upload()" name="file" class="upInput" title="单张上传图片">
+          <input id="post_party_content_upload_type" type="hidden" name="infoType" value="party">
+        </form>
+      </div>
+    </li>
+    <li class="bqgnK_li06">
+      <a class="fwb_spA" href="javascript:void(0);" ontouchstart="" title="插入视频" onclick="_videoTc._show()"></a>
+    </li>
+   </ul>
+</div>
+            </div>
+            <div class="post_main_note">
+                <p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>请输入活动详情</span></p>
+                <div class="txt"></div>
+            </div>
+          </div>
+        </li>
+
+        <li class="post_main_li hdFy">
+          <div class="post_main_l_tit"><b class="red"></b><span>报名费用</span></div>
+          <div class="post_main_r">
+            <div class="post_main_fee" style="display:none;">
+              <input type="radio" name="fee" value="0" id="fee_0" /><span>免费</span>
+              <input type="radio" name="fee" value="1" id="fee_1" /><span>收费</span>
+            </div>
+            <div class="post_main_fee2">
+              <a id="fee_1_A" href="javascript:void(0)" onclick="_feeSet._click('fee_1_A');">收费活动</a>
+              <a id="fee_0_A" href="javascript:void(0)" onclick="_feeSet._click('fee_0_A');">免费活动</a>
+            </div>
+            <div id="payitemDiv">
+            <div class="post_pay_item">
+              <div class="post_pay_item_top"><span class="tit01">编号</span><span class="tit02">电子票类型</span><span class="tit03">金额</span><span class="tit04">人数上限</span></div>
+
+              <div class="cost_add" id="party_101_post_option_cost_add" ><a href="javascript:void(0)" class="cost_add_icon" onclick="_addPayItem('party_101',true)" id="post_party_option_cost_add_icon">+增加电子票</a></div>
+              <div class="txt_ts"><a href="javascript:;"  onclick="_tc._show('post_tixian')"><span>提现规则使用说明</span><img src="http://img1.hudongba.com/static_v4/images/other/wen_icon_gray.png" alt=""></a></div>
+            </div>
+            </div>
+          </div>
+        </li>
+        <li class="post_main_li hdnumLimit">
+          <div class="post_main_l_tit"><b class="red"></b><span>人数上限</span></div>
+          <div id="post_main_r_K_limit" class="red_outK">
+            <div class="post_main_r">
+              <div class="limitNum" id="post_party_limitnum">
+                <div class="limit_L"><input id="post_party_limit_101" class="limitNum_k" type="text" maxlength="7" oninput="_t._set('post_party_limit_'+_post._tempId+'_'+_post._sceneId+_post._id, $(this).val())" onpropertychange="_t._set('post_party_limit_'+_post._tempId+'_'+_post._sceneId+ _post._id, $(this).val())" placeholder="报名人数上限" /><p></p></div>
+              </div>
+            </div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>请设置活动报名人数上限</span></p></div>
+          </div>
+        </li>
+
+        <li class="post_main_li bmtxxx">
+          <div class="post_main_l_tit"><b class="red"></b><span>报名填写信息</span></div>
+          <div class="post_main_r_hidden">
+            <img src="http://img1.hudongba.com/static_v4/images/other/help_icon_jia.png" />
+            <p>默认收集参与者姓名及手机号，如需收集参与者更多信息，请<span>添加</span>自定义项</p>
+          </div>
+          <div class="post_main_r" id="join_PropertyOrder" style="display:none">
+            <div class="joinxx_px" id="joinxx_px">
+              <ol class="joinxx_px_list" id="join_ol">
+
+              <li class="joinxx_px_item name" id="101pary_sort_1" businessid="1" sortid="1" dataType="text">
+                  <div class="joinxx_px_handle">
+                    <div class="yinyingQu">
+                      <span class="icon"></span>
+                      <div class="bdNr" dataTitle="">姓名</div>
+                    </div>
+                    <div class="czQu2"><img src="http://img1.hudongba.com/static_v4/images/detail/subinfo_pic_check.png" alt="" /></div>
+                  </div>
+                </li>
+                <li class="joinxx_px_item phone" id="101pary_sort_2" businessid="2" sortid="2" dataType="text">
+                  <div class="joinxx_px_handle">
+                    <div class="yinyingQu">
+                      <span class="icon"></span>
+                      <div class="bdNr" dataTitle="">手机</div>
+                      <div id="form_phone_recom"  class="form_phone_recom2">
+                        <div class="form_checkbox_check">
+                          <input name="checkphone" id="post_party_phone_101" type="checkbox" checked="checked" onclick="_partyPostPC._chaPhone()"/>
+                        </div>
+                        <p class="form_checkbox_p">报名时验证手机号</p>
+                      </div>
+                    </div>
+                    <div class="czQu"><a href="javascript:void(0)" class="sel thisOver" onclick="isFetchJoinOpt(this);_setJoinobj._init();"></a></div>
+                  </div>
+                </li>
+              </ol>
+
+              <div class="joinxx_px_item_add">
+                <p class="joinxx_px_item_p">添加一个自定义填写项</p>
+                <div class="joinxx_px_item_add_zu">
+                  <a href="javascript:void(0)" class="danH" onclick="_addFill._danH();"><span>单行文本</span></a>
+                  <a href="javascript:void(0)" class="duoH" onclick="_addFill._duoH();"><span>多行文本</span></a>
+                  <a href="javascript:void(0)" class="danX" onclick="_addFill._danX();"><span>单选问题</span></a>
+                  <a href="javascript:void(0)" class="duoX" onclick="_addFill._duoX();"><span>多选问题</span></a>
+                </div>
+              </div>
+
+              <div class="joinxx_px_item_hiddenBtn"><a href="javascript:void(0)"><img src="http://img1.hudongba.com/static_v4/images/post/jiao_up.png" /><span>收起表单设置</span></a></div>
+            </div>
+
+          </div>
+        </li>
+
+
+
+        <li class="post_main_li postContact">
+          <div class="post_main_l_tit"><b class="red"></b><span>主办方联系方式</span></div>
+          <div id="post_main_r_K_contactTel" class="red_outK">
+            <div class="post_main_r">
+              <input type="text" class="post_Contact" id="post_party_postContact_101" onpropertychange="dochangepostContact();_checkRed._contactTel()" oninput="dochangepostContact('post_party_postContact_101');_checkRed._contactTel()" placeholder="请输入11位手机号码，如座机，请输入“区号-电话号码-分机号”" maxlength="70" />
+            </div>
+            <div class="post_main_note"><p><img src="http://img1.hudongba.com/static_v4/images/post/tan_icon.png" alt="" /><span>手机号码格式不正确</span></p></div>
+          </div>
+        </li>
+
+        <li class="post_main_li">
+          <div class="post_main_l_tit"><b class="red"></b><span>允许互动吧推荐</span></div>
+          <div class="post_main_r">
+            <div class="post_main_recommend" id="post_party_private_101">
+              <input type="radio" name="recommend" value="0" class="select_0" onclick="_partyPostPC._fetchRecomm(0);" checked="checked"/><span>允许</span>
+              <input type="radio" name="recommend" value="1" class="select_1" onclick="_partyPostPC._fetchRecomm(1);"/><span>不允许</span>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+      <div class="clear"></div>
+      <div class="agree"><img src="http://img1.hudongba.com/static_v4/images/post/check_yes.png" alt="" /><span>同意</span><a href="/app/service_duty" target="_blank">《互动吧服务协议》</a></div>
+      <div class="fb_Btn">
+        <p class="btnYes">
+        <a class="btn_Post" href="javascript:void(0);" onclick="_partyPostPC._postFront('','2')" >发布</a>
+        <a class="btn_Preview" href="javascript:void(0);" onclick="_partyPostPC._postFront('','1')" >预览</a>
+        </p>
+        <p class="btnNo">
+        <a class="btn_Post thisGray" href="javascript:void(0);" onclick="_partyPostPC._postFront('','2')" >发布</a>
+        <a class="btn_Preview thisGray" href="javascript:void(0);" onclick="_partyPostPC._postFront('','1')" >预览</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar"></div>
+  <div><input type="hidden" value="2" id="joinxx_px_sort_101"/><input type="hidden" value="" id="party_payerror_101"/></div>
+</div>
+<div id="post_party_title_t" style="display:none;"></div>
+<div id="post_party_content_t" style="display:none;"></div>
+<div id="all_pay_item" style="display: none;">
+</div>
+
+<div class="time_Hour">
+  <ul>
+    <li>00:00</li>
+    <li>00:30</li>
+    <li>01:00</li>
+    <li>01:30</li>
+    <li>02:00</li>
+    <li>02:30</li>
+    <li>03:00</li>
+    <li>03:30</li>
+    <li>04:00</li>
+    <li>04:30</li>
+    <li>05:00</li>
+    <li>05:30</li>
+    <li>06:00</li>
+    <li>06:30</li>
+    <li>07:00</li>
+    <li>07:30</li>
+    <li>08:00</li>
+    <li>08:30</li>
+    <li>09:00</li>
+    <li>09:30</li>
+    <li>10:00</li>
+    <li>10:30</li>
+    <li>11:00</li>
+    <li>11:30</li>
+    <li>12:00</li>
+    <li>12:30</li>
+    <li>13:00</li>
+    <li>13:30</li>
+    <li>14:00</li>
+    <li>14:30</li>
+    <li>15:00</li>
+    <li>15:30</li>
+    <li>16:00</li>
+    <li>16:30</li>
+    <li>17:00</li>
+    <li>17:30</li>
+    <li>18:00</li>
+    <li>18:30</li>
+    <li>19:00</li>
+    <li>19:30</li>
+    <li>20:00</li>
+    <li>20:30</li>
+    <li>21:00</li>
+    <li>21:30</li>
+    <li>22:00</li>
+    <li>22:30</li>
+    <li>23:00</li>
+    <li>23:30</li>
+  </ul>
+</div>
+<!--确定修改活动时间、地点？-->
+<div id="tc_changeTimeAddr" class="tanC_ts">
+  <div class="tc_delhd_head"><span>提示</span><a href="javascript:void(0)" onclick="_tc._hide('tc_changeTimeAddr');" title="关闭"><img src="http://img1.hudongba.com/static_v4/images/other/share_qr_close4.png" /></a></div>
+  <div class="bj_white">
+    <div class="tc_delhd_P">确定修改活动时间？</div>
+    <div class="tc_delhd_top">修改后，建议您群发短信通知报名者。<br />（群发功能可以在“管理活动”中找到）</div>
+    <div class="tc_delhd_btn"><a class="confirm_update_time_addr" href="javascript:void(0)" onclick="_partyPostPC._post('','2');" class="l">确定</a><a href="javascript:void(0)" onclick="_tc._hide('tc_changeTimeAddr');" class="r">取消</a></div>
+  </div>
+</div>
+<!--体现规则弹窗-->
+<div id="post_tixian">
+    <div class="post_tixian_top">
+        <h1><span>￥0</span>所有活动，免费提现</h1>
+    </div>
+    <div class="post_tixian_con">
+        <h2>提现的要求：</h2>
+        <p class="txt">1）活动结束后，方可提现。<br>
+        2）活动不存在尚未处理的投诉或纠纷，方可提现。<br>
+        3）符合上述条件的活动，经互动吧官方核实，实际举办时间、地点、内容与活动描述相符，即可通过审核并打款。</p>
+        <h2>提现的实际到账时间：</h2>
+        <p class="txt"> 1）互动吧将在主办方申请提现后的1~3个工作日内完成审核。<br>
+        2）如活动信息不明或参与人无法正常核实时，互动吧审核专员将在活动结束15个自然日内考察活动真实性，期间该活动不存在尚未处理的投诉或纠纷，互动吧审核专员将在15个自然日后通过审核并完成转账。<br>
+        3）通过审核的提现金额会在3个工作日内转到您设置的收款账户中。具体到账时间根据您提供的账户所属银行不同，会有到账时间差异。<br>
+        4）此外，互动吧将对提现行为进行风险审查，可能导致提现延迟。</p>
+        <h2>仍有疑问，请联系互动吧官方客服：</h2>
+        <p class="txt">1）客服电话：4000821222-3<br>
+        2）客服微信：hudongba06<br>
+        3）客服qq：2833124039</p>
+    </div>
+    <div class="post_tixian_close">
+        <div class=" circle">
+            <a href="javascript:;"><img title="关闭" onclick="_tc._hide('post_tixian')" src="http://cdn.hudongba.com/static_v4/images/other/share_qr_close3.png"></a>
+        </div>
+        <span></span>
+    </div>
+</div>
+
+<iframe name="submitIframe" style="display:none;"></iframe>
+<div id="field_find_tc">
+    <div class="del"><a href="javascript:void(0);" onclick="_tc._hide('field_find_tc');"><img src="http://cdn.hudongba.com/static_v4/images/other/share_qr_close3.png" alt=""></a></div>
+    <h2>场地入驻招募函</h2>
+    <p class="txt">互动吧拥有全国百万优质的活动主办方，每天都有大量的主办方需要快速找到活动场地。现互动吧提供场地服务商家曝光展示服务，如果您想推广您的场地信息、精准曝光您的场地位置、愿意更多的承接活动服务、提高场地效益，请联系我们。</p>
+   <div class="contact ">
+     <span>联系电话</span>
+     <p class="tel">400-0821-222 转 5</p>
+     <p class="wx">hudongba_tuiguang</p>
+     <p class="qq">250949779</p>
+   </div>
+</div>
+<div class="tc_c" id="tc_checkOk">
+  <div class="baoSuccess"><img src="http://img1.hudongba.com/static_v4/images/other/pop_remmind_yes.png"></div>
+  <p class="bmTs_c font03">恭喜，您已通过收费功能认证，<br />可设置额度<span id="span_max_money"></span>元以内的收费活动了</p>
+  <div class="tc_c_btn" ontouchstart=""><a class="font02" ontouchstart="" onclick="_attestOk._yes()">知道了</a></div>
+</div>
+<div id="tc_bdCard" class="tcGetiao" style="display:none;">
+  <div class="tcTop">
+  <p class="yhName">设置收款账户</p><a href="javascript:void(0);" class="guanBtn"><img  onclick="_bindBank._hide()" ontouchstart="" src="http://img1.hudongba.com/static_v4/images/other/share_qr_close3.png" alt="" title="关闭" /></a></div>
+  <p class="miaoShu2m">首次发布付费信息，请提供接收你的活动费用打款的银行卡账户</p>
+  <div class="blueBtn"><a href="/bank/party">绑定银行卡</a></div>
+</div>
+<div class="tc_c" id="kaitongsf">
+  <div class="tc_c_nr">
+    <p class="tc_c_nr_txt2 font02" id="p_dt_title">请先联系客服开通收费功能<br >电话：400-0821-222<br >邮箱：team@jootun.com</p>
+  </div>
+  <div class="tc_c_btn" onclick="_bindBank._hide()"  ontouchstart=""><a class="font02">知道了</a></div>
+</div>
+  <iframe id="post_upload_iframe" name="_upload"></iframe>
+  <div id="post_map">
+      <iframe id="post_map_iframe"></iframe>
+  </div>
+
+  <div class="tc_c" id="moreGn">
+    <h1 class="moregn_h1">下载App使用高级功能</h1>
+    <div class="olOut">
+    <ol id="moregn_ol_vote" class="moregn_ol"><li>设置投票邀请码，发布你的私密投票</li><li>即时收取投票、讨论通知，随时关注投票进展</li><li>添加图片和表情，编辑字体颜色、尺寸</li></ol>
+    <ol id="moregn_ol_party" class="moregn_ol"><li>添加更多报名项目，设置报名费用和报名人数</li><li>添加图片和视频，编辑字体颜色、大小</li><li>发布后管理报名人员，收集报名信息</li></ol>
+    <ol id="moregn_ol_article" class="moregn_ol"><li>即时收取讨论通知，随时了解文章关注度</li><li>添加图片和表情，编辑字体颜色、尺寸</li><li>其他高级发布功能，更多特色玩法</li></ol>
+    </div>
+    <div class="moregn_btn"><a onclick="_g(_postLink._appDownload);" href="javascript:void(0)" class="l">立即下载</a><a onclick="_moreGn._hide();" href="javascript:void(0)" class="r">稍后再说</a></div>
+  </div>
+
+  <div class="tc_c" id="tc_video">
+    <div class="tc_c_close"><div><img title="关闭" onclick="_videoTc._hide()"  ontouchstart="" src="http://img1.hudongba.com/static_v4/images/other/share_qr_close3.png"></div></div>
+    <div class="tc_c_title"><p>请粘贴视频地址到下面的输入框</p></div>
+    <div class="tc_c_nr"><input name="" type="text"  id="media_input" /></div>
+    <div class="tc_c_ts2"><p>目前仅支持腾讯和优酷视频</p></div>
+    <div class="tc_c_btn" ontouchstart="" onclick="_richText._mov()"><a>插入</a></div>
+  </div>
+<script>
+    var footer_page_type = "";
+</script>
+
+<div class="footer_gray" >
+    <div class="footer_gray_content">
+        <div class="top">
+            <div class="left">
+                <dl>    
+                    <dt>互动吧</dt>
+                    <dd><a href="/about" target="_blank" rel="nofollow">关于我们</a></dd>
+                    <dd><a href="/news.html" target="_blank" rel="nofollow">新闻动态</a></dd>
+                    <dd><a href="/contactus" target="_blank" rel="nofollow">联系我们</a></dd>
+                </dl>
+                <dl>
+                    <dt>推广合作</dt>
+<dd><a href="/market_info.html" target="_blank" rel="nofollow">广告合作</a></dd>
+                    <dd><a href="/market_info.html" target="_blank" rel="nofollow">分站代理合作</a></dd>
+                    <dd><a href="/market_info.html" target="_blank" rel="nofollow">市场合作</a></dd>
+                    <dd><a href="/market_info.html" target="_blank" rel="nofollow">活动场地入驻</a></dd>
+                </dl>
+                <dl>
+                    <dt>更多</dt>
+                    <dd><a href="/help" target="_blank" rel="nofollow">帮助中心</a></dd>
+                    <dd><a href="/joinus" target="_blank" rel="nofollow">招聘英才</a></dd>
+                    <dd><a href="/sitemap.html" target="_blank">网站地图</a></dd>
+                </dl>
+            </div>
+            <div class="right">
+                <ul class="right_ul">
+                    <li class="right_li">
+                        <p class="title">微信公众号</p>
+                        <img src="http://cdn.hudongba.com/static_v4/images/other/guanzhu_ewm.png" alt="微信公众号">
+                        <p class="txt">搜索：hudong_ba</p>
+                    </li>
+                    <li class="right_li">
+                        <p class="title">互动吧App</p>
+                        <img src="http://cdn.hudongba.com/static_v4/images/other/index_b_img2.png" alt="互动吧App">
+                        <p class="txt">扫描二维码下载</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="bottom" id="footer_info">
+        <p class="txt cen" style="padding-bottom:25px">Jootun团队 版权所有 ICP备13046454号 京公网安备11010502025080</p>
+    </div>
+</div>
+
+
+
+<div id="tc_login" class="tc_login">
+  <div class="tc_login_close"><a href="javascript:void(0)" title="关闭" onclick="_login4._hide('tc_login')"><img src="http://img1.hudongba.com/static_v4/images/other/share_qr_close_20.png" alt="" /></a></div>
+  <!--HDB登录-->
+  <div class="login_HDB">
+    <p class="tit">您还没登录，请登录</p>
+    <div class="error_ts"></div>
+    <div class="k_sj"><span></span><input name="" type="text" placeholder="输入手机号" id="lg_form_account" /></div>
+    <div class="k_mm"><span></span><input name="" type="password" placeholder="输入密码" id="lg_form_password" /></div>
+    <a class="login_Btn" href="javascript:void(0)" onclick="_login4._post()">登录</a>
+  </div>
+  <!--微信登录-->
+  <div class="login_Weixin" style="display:none;">
+    <p class="tit">微信登录</p>
+    <p class="txt_ts">请用微信“扫一扫”下面二维码，并根据提示操作</p>
+    <p class="pic_2wm"><img src="http://img1.hudongba.com/static_v4/images/other/loading2.gif" alt="" id="lm_qr_qr_pic" style="width:80px;height:80px;margin:40px auto;" /></p>
+    <a class="login_Btn" href="javascript:void(0)" onclick="_loginWithQr._post()">我已完成扫描并授权登录</a>
+  </div>
+    <script>
+        var _sid = "";
+    </script>
+  
+  <div class="forget"><input name="" type="checkbox" value="" checked="checked" /> <span>下次自动登录</span><a href="/forget">忘记密码？</a></div>
+  <div class="login_icon">
+    <span>或使用其他账号登录：</span>
+    <a href="javascript:void(0)" class="login_icon_Qq" onclick="_user._loginWithSnp('qq')"></a>
+    <a href="javascript:void(0)" class="login_icon_Wb" onclick="_user._loginWithSnp('weibo')"></a>
+    <a href="javascript:void(0)" class="login_icon_Wx" onclick="_login4._wx()"></a>
+    <a href="javascript:void(0)" class="login_icon_Hd" onclick="_login4._hdb()" style="display:none;"></a>
+  </div>
+  <div class="noHao">我还没有账号，<a href="/register">我要注册</a></div>
+</div>
+
+<div class="indexTc" id="indexTc">
+  <div class="guanbiQu"><a href="javascript:void(0);" onclick="_tc._hide('indexTc');"><img src="http://img1.hudongba.com/static_v4/images/other/share_qr_close3.png" alt="" /></a></div>
+  <ul class="top qieHover">
+    <li class="firstLi thisOver" id="sjB" onclick="_hdbQr._tab('sjB','sjBan');">下载App</li>
+    <li id="wxB" onclick="_hdbQr._tab('wxB','wxBan');">关注微信公众号</li>
+  </ul>
+  <ul class="tcNr">
+    <li id="sjBan">
+      <p class="tc_tt">扫一扫下方二维码下载App ，获取完整体验</p>
+      <div class="tc_Ma2">
+        <img src="http://img1.hudongba.com/static_v4/images/other/ma02.jpg" alt="" />
+        <a href="javascript:void(0);" class="xia_i" onclick="_downloadObj._iPhone()"><img src="http://img1.hudongba.com/static_v4/images/other/mb_icon_apple.png" alt="" /><span>iPhone下载</span></a>
+        <a href="javascript:void(0);" class="xia_a" onclick="_downloadObj._android()"><img src="http://img1.hudongba.com/static_v4/images/other/mb_icon_android.png" alt="" /><span>Android下载</span></a>
+      </div>
+    </li>
+    <li id="wxBan" style="display:none;">
+      <p class="tc_tt">打开微信，扫一扫下方二维码</p>
+      <p class="tc_img"><img src="http://img1.hudongba.com/static_v4/images/other/ma01.jpg" alt="" /></p>
+      <p class="tc_gz">或者搜索并关注微信公众帐号：hudong_ba</p>
+    </li>
+  </ul>
+</div>
+
+<input name="" type="text" id="login_Way" hidden="hidden" />
+  <div class="loadingDiv" id="loadingDiv" style="display:none;"><p class="pImg"><img src="http://img1.hudongba.com/static_v4/images/other/loading2.gif" /></p><p class="pTxt"></p></div>
+  <div id="cover"></div>
+  <div id="cover2"></div>
+  <div id="toast" class="toast"></div>
+  <div id="loading_center" class="loading_center">
+    <div><img src="http://img1.hudongba.com/static_v4/images/other/loading2.gif"></div>
+    <div id="loading_center_text"></div>
+  </div>
+  <div id="alert" class="alert">
+    <div id="alert_title"></div>
+    <div id="alert_text"></div>
+    <div id="alert_button"><button id="alert_button_ok" class="button_3" ontouchstart=""></button></div>
+    <div id="alert_cancel" class="alert_cancel"  ontouchstart="" onclick="_alert._hide()"></div>
+  </div>
+  <div id="tc_bmSuccess" style="display: none; z-index: 9999; position: fixed; left: 50%; top: 50%; margin-top: -40px; margin-left: -125px;">
+    <div class="baoSuccess"><img src="http://img1.hudongba.com/static_v4/images/other/pop_remmind_yes.png" class="successDui" /><p id="sucess_text"></p></div>
+  </div>
+  <div class="tc_c" id="appDownts">
+    <p class="appDownts_h1">下载互动吧App</p>
+    <div class="appDownts_nr">
+      <p>使用互动吧App，随身查看活动报名情况</p>
+    </div>
+    <div class="appDownts_btn"><a onclick="_g(_postLink._appDownload);" href="javascript:void(0)" class="l">立即下载</a><a onclick="_tc._hide('appDownts');" href="javascript:void(0)" class="r">稍后再说</a></div>
+  </div>
+<div id="div_topbar_title" style="display:none;">发布活动</div>
+<div id="share_weixin" onclick="_shareInWeixin._hide()">
+  <div><img id="share_weixin_guide"></div>
+  <div><button ontouchstart="" class="button_3">关闭提示</button></div>
+</div>
+<div id="share_qq" onclick="_shareInQq._hide()">
+  <div><img id="share_qq_guide"></div>
+  <div><button ontouchstart="" class="button_3">关闭提示</button></div>
+</div>
+<div class="tc_c" id="tc_2weima">
+  <div class="tc_c_close"><div><img title="关闭" onclick="_joinQr._hide()"  ontouchstart="" src="http://img1.hudongba.com/static_v4/images/other/share_qr_close3.png"></div></div>
+  <div class="tc_c_title"><p class="font02">报名凭证</p></div>
+  <div class="tc_c_nr">
+    <p class="tc_c_nr_txt font03" id="p_dt_title"></p>
+    <div class="tc_c_nr_pic tc_c_nr_pic_2 tc_c_nr_pic_5"><strong><img class="weima2 weima2_2" id="join_qr_img" src="http://img1.hudongba.com/static_v4/images/other/loading2.gif"></strong></div>
+    <div class="tc_c_ts2 font04">
+        
+      <p class="bmTs_c font03"><a href="/find/">更多精彩活动 &gt;</a></p>
+    </div>
+    <div class="tc_c_btn" ontouchstart="" onclick="_joinQr._download()" style="margin-top:10px;"><a class="font02">保存</a></div>
+    <div class="tc_c_btn_load" ontouchstart="" ><p><span class="font02">正在保存</span><img class="tc_c_btn_loading" src="http://img1.hudongba.com/static_v4/images/other/loading2.gif"></p></div>
+  </div>
+</div>
+
+<div class="tc_c" id="share_qr" style="display:none;">
+  <div class="tc_c_close"></div>
+  <div class="tc_c_title"><p class="font02">发送给好友</p></div>
+  <div class="tc_c_nr">
+    <p class="tc_c_nr_txt font03 txtP">1. 使用微信/手机QQ/微博客户端扫描以下二维码</p>
+    <div class="tc_c_nr_pic"><img class="weima2" id="share_qr_img" src="http://img1.hudongba.com/static_v4/images/other/loading2.gif"></div>
+      <p class="tc_c_nr_txt font03 txtP">2. 使用这些客户端的分享功能将信息发送给好友</p>
+  </div>
+  <div class="tc_c_btn" ontouchstart=""><a class="font02" onclick="_qr._hide()" ontouchstart="">关闭提示</a></div>
+</div>
+<div class="tc_c" id="share_qr_1">
+  <div class="tc_c_close"><div><img title="关闭" onclick="_qr._hide()"  ontouchstart="" src="http://img1.hudongba.com/static_v4/images/other/share_qr_close3.png"></div></div>
+  <div class="tc_c_title"><p class="font02">分享二维码</p></div>
+  <div class="tc_c_nr">
+    <p class="tc_c_nr_txt font03" id="p_dt_title"></p>
+    <div class="tc_c_nr_pic"><img class="weima2" id="share_qr_1_img" src="http://img1.hudongba.com/static_v4/images/other/loading2.gif"></div>
+    <div class="tc_c_ts font04">长按图片保存</div>
+    <p class="tc_c_nr_txt font03" id="p_dt_title">可用于印刷品、幻灯片等其他方式的宣传</p>
+  </div>
+  <div class="tc_c_btn" ontouchstart="" onclick="_qr._download()"><a class="font02">保存</a></div>
+  <div class="tc_c_btn_load" ontouchstart="" ><p><span class="font02">正在保存</span><img class="tc_c_btn_loading"  src="http://img1.hudongba.com/static_v4/images/other/loading2.gif"></p></div>
+</div>
+<div id="login">
+  <div class="tc_c_close"><div><img title="关闭" onclick="_login._hide()"  ontouchstart="" src="http://img1.hudongba.com/static_v4/images/other/share_qr_close3.png"></div></div>
+  <div class="login_title">离成功只差登录</div>
+  <div id="login_button"></div>
+  <div class="login_more"><a href="javascript:_g(_link._login)" class="gray">使用其它方式登录</a></div>
+</div>
+<div id="seo" style="height:1px;overflow:hidden;margin-top:-1px;">
+  <a href="/" style="color:#dddddd;font-size:1px">互动吧</a>
+  <a href="/showinfo/page/1" style="color:#dddddd;font-size:1px;">活动列表</a>
+  <a href="/post" style="color:#dddddd;font-size:1px">互动吧-发布首页</a>
+  <a href="/post/vote" style="color:#dddddd;font-size:1px">互动吧-发布投票</a>
+  <a href="/post/party" style="color:#dddddd;font-size:1px">互动吧-发布活动</a>
+  <a href="/post/article" style="color:#dddddd;font-size:1px">互动吧-发布文章</a>
+  <a href="/find" style="color:#dddddd;font-size:1px">互动吧-热门活动</a>
+</div>
+<script type="text/javascript">
+var _post = {
+  _city:"",
+  _district:"",
+  _address:"",
+  _id: "",
+  _type: "party",
+  _tempId: "101",
+  _isPay: "",
+  _isView: "",
+  _sceneId: "1",
+  _lng: "",
+  _lat: "",
+  _endTime: "",
+  _startDate: "",
+  _endDate: "",
+  _isPrivate: "",
+  _mobileVerify: "",
+  _detailArea: "",
+  _showCityinfo: "",
+  _singleMaxMoney: "",
+  _postJoinItem: "",
+  _payItemName: "",
+  _payItemPrice: "",
+  _payItemNum: "",
+  _joinPropertyOrder: "",
+  _personLimit: "0",
+  _joinPerson: "0",
+  _isautoPay: "false",
+  _isSelectGroup : "0",
+  _qqNum : "",
+  _qqState : "",
+  _qqCode : "",
+  _qqToken : "",
+  _qqGroupNum : "",
+  _qqGroupHeadImage : "",
+  _qqGroupName : "",
+  _qqGroupJoinUrlPc : "",
+  _qqGroupJoinUrlWap : "",
+  _qqSelectTimestamp : new Date().getTime(),
+  _bigCategoryId : "",
+  _bigCategoryName : "",
+  _smallCategoryId : "",
+  _smallCategoryName : "",
+  _needPartySupport : "",
+  _partySupportMobile : "",
+  _info_is_starting : "",
+  _poster_image : "",//海报图片地址
+  _contact_mobile : "",//主办方联系方式-手机号
+  _info_state : "",//6是已屏蔽
+  _userToken : "209c45d3-44fd-40c8-8c13-f341a848ba5b"
+};
+
+$(".post_main_fee2 a,.post_main_meet a").click(function(){
+  $(this).addClass("thisOver").siblings().removeClass("thisOver");
+});
+
+</script>
+  <script src="http://quick.hudongba.com/static_grunt/20160823_113316/js/comm.20160823_113316.min.js"></script>
+  <script src="http://quick.hudongba.com/static_v4/js/lib/jquery_date.js"></script>
+  <script src="http://quick.hudongba.com/static_v4/js/lib/kindeditor_160119.js"></script>
+  <script src="http://quick.hudongba.com/static_v4/js/lib/hdb_richtext_160114.js"></script>
+  <script src="http://quick.hudongba.com/static_grunt/20160823_113316/js/pc/post.20160823_113316.min.js"></script>
+  <script src="http://quick.hudongba.com/static_v4/js/lib/notice.js"></script>
+  <script src="http://quick.hudongba.com/static_v4/js/lib/json2.js"></script>
+  <script src="http://quick.hudongba.com/static_v4/js/lib/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="http://quick.hudongba.com/static_v4/js/lib/jquery-ui.js"></script>
+    <script src="http://quick.hudongba.com/static_v4/js/lib/jquery.sly.min.js"></script>
+    <script src="http://quick.hudongba.com/static_v4/js/lib/jquery.easing-1.3.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?694932821b7c606e6eb3984aa634ee90";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+var editor = KindEditor.create('#post_party_content', {
+    items:['fontsize','forecolor','bold','underline','multiimage','image','media'],
+    htmlTags:{
+    span : ['.color','.font-size','.font-weight','.text-decoration'],
+    img : ['src', 'width', 'height','class'],
+    'br,strong,p,u' : [],
+    embed:['id','class','height','src','width','wmode','imgsrc']
+    },
+    pasteType:1,
+    resizeType:1,
+    resizeMode:1,
+    useContextmenu:true,
+    formatUploadUrl:false,//表情是否保存域名
+    uploadJson : _domain + 'post/api:img?returnType=json&infoType=' + _post._type,
+    afterFocus:function(){
+      _richText._onFocus();
+      $(".hdRichtext").addClass("blue");
+      $(".k_site_K,.k_site_K3,.k_site_K7,.date_selector").hide();
+      $(".k_site,.k_style,.post_style_K,.k_time_date").removeClass("blue");
+      $("#sDateYMD,#eDateYMD,#endtimeYMD,#vote_end_ymd").parent().children(".date_selector").remove();
+      $('.post_tiMe1,.post_tiMe2,.post_tiMe3').date_input();
+    },
+    afterBlur:function(){
+      _richText._onBlur();
+      $(".hdRichtext").removeClass("blue");
+    },
+    afterCreate:function(){
+      _richText._black();
+    },
+    afterChange:function(){
+       _partyPostPC._btnShow();
+       _checkRed._richText();
+       //文字长度显示
+       _txt_num(20000);
+    }
+  });
+_txt_num = function(number){
+    var aa = editor.text();
+    _HdbToolbar._text = aa.replace(/<img[^>]*\/>/g,"").replace(/<embed[^>]*\/>/g,"").replace(/\s*/g, "");
+    var _len = _._len(_HdbToolbar._text);
+        if( number -_len>=0){ 
+            var num = parseInt(( number -_len)/2);
+            $('.post_main_note .txt').html("还可以输入<i>"+num+"</i>字").css({"color":"#000"});
+        }else{
+            var num = Math.ceil((_len-number )/2)
+            $('.post_main_note .txt').html("已经超过"+num+"字").css({"color":"#eb6877"});
+        }
+   }
+</script>
+<script>
+DateInput.prototype.changeInput = function(dateString) {
+  this.input.val(dateString).change();
+  this.hide();
+  _qkInput._show();
+  _checkRed._partyTime();
+};
+DateInput.prototype.show = function(){
+  this.rootLayers.css("display", "block");
+  $([window, document.body]).click(this.hideIfClickOutside);
+  this.input.unbind("focus", this.show);
+  $(document.body).keydown(this.keydownHandler);
+  this.setPosition();
+  if($(this.input).attr("id")=="sDateYMD"){
+    $("#sDateYMD").parent(".k_time_date").addClass("blue");
+  }else if($(this.input).attr("id")=="eDateYMD"){
+    $("#eDateYMD").parent(".k_time_date").addClass("blue");
+  }
+  $(".k_time_hour").removeClass("blue");
+}
+DateInput.prototype.hide = function(){
+  this.rootLayers.css("display", "none");
+  $([window, document.body]).unbind("click", this.hideIfClickOutside);
+  this.input.focus(this.show);
+  $(document.body).unbind("keydown", this.keydownHandler)
+  if($(this.input).attr("id")=="sDateYMD"){
+    $("#sDateYMD").parent(".k_time_date").removeClass("blue");
+  }else if($(this.input).attr("id")=="eDateYMD"){
+    $("#eDateYMD").parent(".k_time_date").removeClass("blue");
+  }
+}
+
+var supportCityArray = ["北京", "上海", "广州", "深圳", "南京", "苏州", "杭州", "青岛", "烟台", "合肥", "重庆", "成都", "昆明", "贵阳", "大连", "沈阳", "哈尔滨", "天津", "武汉", "西安", "郑州", "兰州", "大同", "太原", "海口", "珠海", "桂林", "南昌", "包头", "鄂尔多斯", "呼和浩特", "乌鲁木齐", "银川", "西宁"];
+
+function checkIsPartySupport(){
+
+    //用户输出的市 + 区
+    var area =  $("#post_party_place_city_" + _post._tempId).val() || "";
+
+    //用户输入的市
+    var city = area.split(" ")[0];
+
+    for(var index in supportCityArray){
+        if(supportCityArray[index] == city){
+            $("#partySupportLi").show();
+            return;
+        }
+    }
+
+    $("#partySupportLi").hide();
+
+};
+
+$(document).ready(function() {
+  if(_post._info_state == '6' || _post._info_state == '7'){
+    $(".btn_Post").html('提交审核');
+  }
+});
+
+
+$(".post_main_r_hidden").click(function(){
+  $(this).slideUp(100,function(){
+    $("#join_PropertyOrder").slideDown(300);
+  });
+});
+
+$(".joinxx_px_item_hiddenBtn a").click(function(){
+  $("#join_PropertyOrder").slideUp(300,function(){
+    $(".post_main_r_hidden").slideDown(100);
+  });
+});
+
+$(".posterKu_main a").click(function(){
+  $(this).addClass("thisOver").siblings().removeClass("thisOver");
+  var _url = $(this).children("img").attr("data-src");
+  $("#posterInputUrl").val(_url);
+  $("#addOkbtn").prop('outerHTML','<a onclick="_posterLoad._getFromRoom()" href="javascript:void(0)" id="addOkbtn" class="thisOver">确认添加海报</a>');
+});
+var width_auto = function(that){
+    if (that.children('span').css('background-position') == '0px 0px') {
+        $('.field_list_wrap').animate({'width':'0px'}, 0,function(){
+            $('.field_list_wrap_big').css('left','872px');
+            $('.field_list_wrap_big .close span').css('background','url(http://cdn.hudongba.com/static_v4/images/other/field_IconSprite4.png) no-repeat -20px 0px');
+            $('.field_btn a').css('right','10px');
+        })
+    }else{
+        $('.field_list_wrap').animate({'width':'240px'}, 0,function(){
+            $('.field_list_wrap_big').css('left','630px');
+            $('.field_list_wrap_big .close span').css('background','url(http://cdn.hudongba.com/static_v4/images/other/field_IconSprite4.png) no-repeat 0px 0px');
+            $('.field_btn a').css('right','250px');
+        })
+    };
+}
+var imageUrl = "http://img1.hudongba.com";
+</script>
+</body>
+</html>

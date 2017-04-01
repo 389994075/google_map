@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>我的地图</title>
+	<style>
+		#mapContainer{
+			height:800px;
+			width:800px;
+		}
+		* {
+            margin: 0;
+            padding: 0;
+        }
+		html, body {
+            width: 100%;
+            height: 100%;
+        }
+		#box{
+			position: absolute;
+			left:3%;
+			top:8%;
+		}
+		.seach-box {
+            background: #fff;
+            border: 1px solid black;
+            width: 200px;
+            position: absolute;
+            left: 56px;
+    		top: 40px;
+    		z-index: 99;
+        }
+		.seach-box ul li{
+            list-style: none;
+            font-size:10px;
+            line-height:24px;
+            padding-left:10px;
+        }
+		.seach-box ul li:hover {
+            cursor: pointer;
+            background: #ccc;
+        }
+        #tab{
+        	text-align: center;
+        	position: absolute;
+        	left:0;
+        	bottom:0;
+        	background: #fff;
+        	opacity: 0.7;
+        	z-index: 100;
+        }
+        .on{
+        	background: #ccc;
+        }
+        .info{
+        	border:1px solid #000;
+        	background:#fff;
+        	opacity: 0.7;
+        	position:absolute;
+        	z-index:100;
+        	right:0;
+        	top:0;
+        	font-size:10px;
+        	padding: 5px;
+        	line-height:18px;
+        }    	
+	</style>
+</head>
+
+<body onload="load()" onunload="GUnload()"> <!--onload加载地图GUnload()防止内存泄漏--> 
+	<div style="height:20px" id="mapContainer"></div>  
+    <div style="float: left; text-align: center; height: 550;">  
+        <form action="#" onsubmit="showAddr(this.address.value); return false">  
+        	地点名:<input type="text" name="address" value="苏州虎丘" style="width:198px"  id="search"/>  
+        	<input type="submit" value="查找" id="searchBtn"/>  
+        </form>  
+    </div>  
+ 	<div class="seach-box">
+ 		<ul id="search-list"></ul>
+ 	</div>  
+    	<div id="map" style="width: 100%; height: 100%;">  
+    </div>
+    
+    <table border="1" width="800" id="tab" style="text-align: center;"></table>	
+	<div class="info" id="info"></div>
+	<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyCS6KlQiaLg37b1BUbKf6iu3Q0TSW5brKw"></script>
+  	<script src="js/jquery.js"></script>
+  	<script type="text/javascript">
+  	var i=1;  
+    var map;  
+    var currentOverlay = null;  
+    var geocoder;  
+    var address;  
+    var gdir;  
+    var addressMarker;  
+    function load() {  
+ 		if (GBrowserIsCompatible()) {  //确定Api能否兼容当前浏览器  
+            map = new GMap2(document.getElementById("map"));  //调用google函数画一个初图  
+            var point = new GLatLng(31.294035589372354,120.57870384694675);   //初始化地图
+            map.setCenter(point,14);  
+            //map.addControl(new GLargeMapControl());  
+        	map.addControl(new GMapTypeControl());          
+         	var customUI = map.getDefaultUI();  
+         	//Remove MapType.G_HYBRID_MAP  
+	        customUI.maptypes.hybrid = false;  
+	        map.enableDoubleClickZoom();  
+	        map.setUI(customUI);  
+	        //////////////////////////////////////////////维基百科  
+	        //var myLayer = new GLayer("org.wikipedia.zh");  
+	        //map.addOverlay(myLayer);  
+	        ///////////////////////////////////////////////////////  
+            var marker = new GMarker(point);  
+    		//var catorMsg = '苏州虎丘长江路';  
+            //marker.openInfoWindowHtml(catorMsg);  
+   			map.addOverlay(marker);  
+      		geocoder = new GClientGeocoder();  //地址解析
+      		geocoder.getLocations("苏州虎丘", function (response) {  
+			place = response.Placemark[0];  
+			marker.openInfoWindowHtml(  
+				'<b>纬度:</b>' + place.Point.coordinates[1] + '<br>' + 
+				'<b>经度:</b>' + place.Point.coordinates[0] + '<br>' +  
+				'<b>地址:</b>' + place.address + '<br>' +  
+				'<b>精准度:</b>' + place.AddressDetails.Accuracy + '<br>' +  
+				'<b>缩放级别为:</b>' + map.getZoom()+'<br>'+     
+				'<b>国家代码:</b> ' + place.AddressDetails.Country.CountryNameCode);  
+		   	})  
+        GEvent.addListener(map, 'click',getAddress);//内置搜索  
+        //map.addControl(new google.maps.LocalSearch(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,20)));  
+  map.addControl(new GScaleControl());//添加地图组件　地图比例尺控件  
+    map.addControl(new GOverviewMapControl(new GSize(200, 200))); //添加地图组件　一个可折叠的鹰眼地图，在地图的角落  
+        }  
+    }  
+    function removeCurrentOverlay() {  
+        map.removeOverlay(currentOverlay);  
+    }  
+  
+  	function getAddress(overlay, latlng) {  
+      if (latlng != null) {  
+        address = latlng;  
+        geocoder.getLocations(latlng, showAddress);  
+      }  
+    }  
+  
+    function showAddress(response) {  
+      map.clearOverlays();  
+      if (!response || response.Status.code != 200) {  
+        alert("HTTP状态代码:" + response.Status.code);  
+      } else {  
+        place = response.Placemark[0];  
+        point = new GLatLng(place.Point.coordinates[1],  
+                            place.Point.coordinates[0]);  
+        marker = new GMarker(point);  
+    
+        map.addOverlay(marker);  
+        marker.openInfoWindowHtml(  
+        '<b>纬经度:</b>' + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + '<br>' +  
+        '<b>地址:</b>' + place.address + '<br>' +  
+        '<b>精准度:</b>' + place.AddressDetails.Accuracy + '<br>' +  
+        '<b>缩放级别为:</b>' + map.getZoom()+'<br>'+     
+        '<b>国家代码:</b> ' + place.AddressDetails.Country.CountryNameCode);  
+      }  
+    } 
+    
+    ///外置搜索，只能搜地址  
+    function showAddr(address) {  
+  		if (geocoder) {  
+        	geocoder.getLatLng( address,function(point) {  
+	            if (!point) {  
+	            	alert("不能解析: " + address);  
+	            }else{  
+	            	map.setCenter(point, 14);  
+	            }  
+    			geocoder.getLocations(address, showAddress);  
+          	});  
+      	}  
+    }  
+	    
+	var search = document.getElementById('search');
+    var searchBtn = document.getElementById('searchBtn');
+    var searchList = document.getElementById('search-list');
+	searchBtn.onclick = function () {
+	 	searchList.innerHTML = "";
+	 	var val = search.value;
+	 	if (val) {
+	 		$.ajax({
+	 			url : "data/data.json",
+	 			type : "get",
+	 			success : function(data){
+	 				var fragement = document.createDocumentFragment();
+	 				for(var i in data){
+	 					if(data[i].address.substr(0,val.length) == val){
+                            var li = document.createElement('li');
+                            li.innerHTML = data[i].address;
+                            fragement.appendChild(li);
+	                    }else if(data[i].train.substr(0,val.length) == val.toUpperCase()){
+	 						var li = document.createElement('li');
+                            li.innerHTML = data[i].train;
+                            fragement.appendChild(li);
+	 					}else if(data[i].time.substr(0,val.length) == val){
+	 						var li = document.createElement('li');
+                            li.innerHTML = data[i].time;
+                            fragement.appendChild(li);
+	 					}else if(data[i].pinying.substr(0,val.length) == val.toLocaleLowerCase()){
+	 						var li = document.createElement('li');
+                            li.innerHTML = data[i].address;
+                            fragement.appendChild(li);
+	 					}
+	 				}
+	 				searchList.parentNode.style.display = 'block';
+                    searchList.appendChild(fragement);
+                    selectList();
+	 			},
+	 			error: function(){
+              		//请求出错处理
+                	alert("Error!");
+              }
+	 		})
+	 	}
+	}
+		
+	function selectList(){
+		$("#search-list li").on("click",function(){
+			console.log($(this)[0].innerHTML);
+			search.value=$(this)[0].innerHTML;
+			searchList.style.display = 'none';
+		})
+	}
+	//渲染地图的相关信息
+	function info(){
+		$.ajax({
+ 			url : "data/list.json",
+ 			type : "get",
+ 			success : function(data){
+ 			
+ 				renderHtml(data);	
+ 				eventHtml();
+			}
+ 		})
+	}
+	info();
+	//渲染页面
+	function renderHtml(data){
+		var str='<tr class="title">'+
+					'<td>机车代码</td>'+
+					'<td>型号</td>'+
+					'<td>状态</td>'+
+					'<td>上线时间</td>'+
+					'<td>生产厂商</td>'+
+					'<td>今日公里数</td>'+
+					'<td>累计公里数</td>'+
+				'</tr>';
+		for(var i in data){
+			str+='<tr class="content">'+
+					'<td>'+data[i].id+'</td>'+
+					'<td>'+data[i].model+'</td>'+
+					'<td>'+data[i].state+'</td>'+
+					'<td>'+data[i].onlineTime+'</td>'+
+					'<td>'+data[i].manufacturer+'</td>'+
+					'<td>'+data[i].TodayMileage+'</td>'+
+					'<td>'+data[i].AllMileage+'</td>'+
+				'</tr>';
+		}
+		$("#tab").html(str);		
+	}
+	
+	//鼠标滑过事件
+	function eventHtml(){
+		
+	    $(".content").on("mousemove",function(){
+	    	
+			$(this).addClass("on").siblings().removeClass("on");
+			var tab0 = $(".title").find("td").eq(0).text(),
+			    tab1 = $(".title").find("td").eq(1).text(),
+			    tab2 = $(".title").find("td").eq(2).text(),
+			    tab3 = $(".title").find("td").eq(3).text(),
+			    tab4 = $(".title").find("td").eq(4).text(),
+			    tab5 = $(".title").find("td").eq(5).text(),
+			    tab6 = $(".title").find("td").eq(6).text(),		
+			    text1 = $(this).find("td").eq(0).text(),
+			    text2 = $(this).find("td").eq(1).text(),
+			    text3 = $(this).find("td").eq(2).text(),
+			    text4 = $(this).find("td").eq(3).text(),
+			    text5 = $(this).find("td").eq(4).text(),
+		        text6 = $(this).find("td").eq(5).text(),
+			    text7 = $(this).find("td").eq(6).text();
+			    
+			$("#info").html(
+				tab0+":"+text1
+				+"</br>"+tab1+":"+text2
+				+"</br>"+tab2+":"+text3
+				+"</br>"+tab3+":"+text4
+				+"</br>"+tab4+":"+text5
+				+"</br>"+tab5+":"+text6
+				+"</br>"+tab6+":"+text7
+			);
+			
+			$(".info").show();
+		
+		})		
+	}		
+</script> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

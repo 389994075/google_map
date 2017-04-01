@@ -1,0 +1,42 @@
+<html>
+<head>
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+
+<script>
+//北京，西安，重庆，香港 114°15′和北纬22°15′34.16,108.54
+var x=new google.maps.LatLng(39.27,116.95);
+var stavanger=new google.maps.LatLng(34.16,108.54);
+var amsterdam=new google.maps.LatLng(29.35,106.33);
+var london=new google.maps.LatLng(22.15,114.15);
+
+function initialize()
+{
+var mapProp = {
+  center:x,
+  zoom:4,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var myTrip=[stavanger,amsterdam,london];
+var flightPath=new google.maps.Polyline({
+  path:myTrip,
+  strokeColor:"#0000FF",
+  strokeOpacity:0.8,
+  strokeWeight:4
+  });
+
+flightPath.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+<div id="googleMap" style="width:1200px;height:900px;"></div>
+</body>
+</html>

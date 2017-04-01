@@ -1,0 +1,198 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdIlaRp0Dm8cEP8oXZ_8HLuj_zpccK7gw&sensor=true">
+    </script>
+<script type="text/javascript" src="js/jquery.js"></script> 
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	ul,li{
+		list-style: none;
+	}
+	#googleMap{
+		width:100%;
+		height:100%;
+	}
+	.info{
+		border:1px solid #000;
+		position:absolute;
+		left:300px;
+		top:0;
+		background:#fff;
+		opacity: 0.7;
+		font-size:10px;
+		padding:5px;
+		display: none;
+	}
+	.render{
+		border:1px solid #000;
+		position:absolute;
+		right:0;
+		top:0;
+		background:#fff;
+		opacity: 0.7;
+		height:80%;
+		overflow: hidden;
+		overflow-y: scroll;
+		font-size:10px;
+	}
+	.render ul {
+		border-bottom:1px solid #000;
+		position: relative;
+		padding:5px 5px 5px 30px;
+	}
+	
+	.render	ul img{
+		position: absolute;
+		left:5px;
+		top:5px;
+	}
+	.img2{
+		display: none;
+	}
+	.on{
+		color:blue;
+	}
+</style>
+</head>
+<body>
+	<div id="googleMap"></div>
+	<div class="render"></div>
+	<div class="info"></div>
+<script>
+
+	//var lattest='';
+	//var lngtest='';
+	var dataJson;
+	$(function () {
+		ajaxJson("data/data.json");
+		initialize(); 
+	});
+	function ajaxJson(url){
+		//var a = "";
+		$.ajax({
+ 			url : url,
+ 			type : "get",
+ 			async : "false",
+ 			success : function(data){
+ 				dataJson = data;
+ 			}
+ 		})		
+ 		//return a;
+	}
+	function initialize(){
+		
+		render(dataJson);
+		showIcon(dataJson);
+
+		var myCenter=new google.maps.LatLng(dataJson[0].lat,dataJson[0].lng);
+		// 初始化map
+		var mapProp = {
+			center:myCenter,//设置中心点
+			zoom:4,//缩放级别4
+			mapTypeId:google.maps.MapTypeId.ROADMAP//添加路标
+		};
+		//调用google函数画一个初图
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		// 添加标记
+		var marker=new google.maps.Marker({
+	  		position:myCenter,
+	  		icon:'img/train.png'//火车图标
+	  	});
+		marker.setMap(map);
+		//添加信息框
+		var infowindow = new google.maps.InfoWindow({
+			content:"Hello World!"
+		});
+		//划过标记，显示相关信息
+		google.maps.event.addListener(marker, 'mouseover', function() {
+			marker.icon="img/train_blue.png";
+			marker.setMap(map);
+			//infowindow.open(map,marker);
+		});
+		//划过标记，显示相关信息
+		google.maps.event.addListener(marker, 'click', function() {
+			marker.icon="img/train_blue.png";
+			marker.setMap(map);
+			infowindow.open(map,marker);
+		});
+		
+		//离开标记，相关信息取消
+		google.maps.event.addListener(marker, 'mouseout', function() {
+			marker.icon="img/train.png";
+			marker.setMap(map);
+			//infowindow.close(map,marker);
+		});
+	}
+	//渲染地图的相关信息
+	function render(data){
+
+		var str="";
+		var arr=[];
+
+		for(var i in data){
+			//lattest=data[i].lat;
+			//lngtest=data[i].lng;
+//			arr.push(lat+","+lng)
+			str+='<ul>'+
+				'<li><img src="'+data[i].img+'" class="img"><li>'+
+				'<li><img src="'+data[i].img2+'" class="img2"><li>'+
+				'<li><b>机车代码：</b>'+data[i].id+'</li>'+
+				'<li><b>机车型号：</b>'+data[i].model+'</li>'+
+				'<li><b>纬度：</b>'+data[i].lat+'</li>'+
+				'<li><b>经度：</b>'+data[i].lng+'</li>'+
+				'<li><b>生产厂商：</b>'+data[i].manufacturer+'</li>'+
+				'<li><b>今日公里数：</b>'+data[i].TodayMileage+'</li>'+
+				'<li><b>累计公里数：</b>'+data[i].AllMileage+'</li>'+
+			'</ul>';
+		}
+		$(".render").html(str);
+		$(".render ul").on("mousemove",function(){
+			var msg=$(this).find(".img").hide().parent("li").siblings().find(".img2").show();
+			$(this).addClass("on");
+			$(".info").show().html($(this).html()).find(".img2").hide();
+		})
+		$(".render ul").on("mouseout",function(){
+			$(this).find(".img").show().parent("li").siblings().find(".img2").hide();
+			$(this).removeClass("on");
+		})
+	}
+
+
+
+	function showIcon(arr){
+		var map;
+  		var myLatlng = new google.maps.LatLng(arr[0].lat,arr[0].lng);  
+  		var myOptions = {  
+		    zoom: 14,  
+		    center: myLatlng,  
+		    mapTypeId: google.maps.MapTypeId.ROADMAP  
+		  }  
+		  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);  
+		  
+		  // Add 5 markers to the map at random locations  
+		  var southWest = new google.maps.LatLng(20.279566,112.540955);  
+		  var northEast = new google.maps.LatLng(22.279566,113.540955);  
+		  var bounds = new google.maps.LatLngBounds(southWest,northEast);  
+		  map.fitBounds(bounds);  
+		  //var lngSpan = northEast.lng() - southWest.lng();  
+		  //var latSpan = northEast.lat() - southWest.lat();  
+		  for (var i = 0; i < arr.length; i++) {  
+		    var location = new google.maps.LatLng(arr[i].lng,arr[i].lat);  
+		    var marker = new google.maps.Marker({  
+		        position: location,   
+		        map: map,
+		    	icon:'train.png' 
+		    });  
+		    var j = i + 1;  
+		    marker.setTitle(j.toString());  
+		    attachSecretMessage(marker, i);  
+	  	}
+	}
+</script>
+</body>
+</html>

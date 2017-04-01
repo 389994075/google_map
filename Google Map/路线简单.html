@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+		<title>我的地图</title>
+    <style>
+    	body {
+			  margin: 0;
+			}
+			#map {
+			  height: 900px;
+			  position: relative;
+			  width: 100%;
+			}
+			/*.maps-frame {
+			  height: 430px;
+			  width: 100%;
+			}
+			.kd-tabbed-vert.header-links .kd-tabbutton a {
+			  color: #757575;
+			  display: inline-block;
+			  height: 100%;
+			  padding: 0 24px;
+			  width: 100%;
+			}
+			.kd-tabbed-vert.header-links .kd-tabbutton {
+			  padding: 0;
+			}
+			.kd-tabbed-vert.header-links .kd-tabbutton.selected a {
+			  color: #03a9f4;
+			}
+			.kd-tabbed-vert.header-links .kd-tabbutton a:focus {
+			  text-decoration: none;
+			}
+			p.top-desc {
+			  padding: 1em 1em .1em 1em;
+			}
+			p.bottom-desc {
+			  padding: 0em 1em 1em 1em;
+			}*/
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+    
+      function initMap() {
+        var start = {lat: 36, lng:116};
+        var end = {lat: 35, lng: 119};
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: start,
+          scrollwheel: true,
+          zoom: 7
+        });
+
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          map: map
+        });
+
+        // 设置目的地,起源和交通方式。
+        var request = {
+        	destination: end,
+        	origin: start,
+          travelMode: 'DRIVING'
+        };
+
+        // 通过方向服务请求
+        var directionsService = new google.maps.DirectionsService();
+        directionsService.route(request, function(response, status) {
+          if (status == 'OK') {
+            // 显示在地图上的路线。
+            directionsDisplay.setDirections(response);
+          }
+        });
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS6KlQiaLg37b1BUbKf6iu3Q0TSW5brKw&callback=initMap"
+        async defer></script>
+  </body>
+</html>
